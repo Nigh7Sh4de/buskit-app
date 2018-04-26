@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
   View,
   Text,
@@ -7,26 +7,26 @@ import {
   Linking,
 } from 'react-native'
 
-var url = 'https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=buskit://buskit.tv/redirect&response_type=token+id_token&scope=openid'
+import { 
+  login,
+} from 'src/actions/UserActions'
 
-export default class LoginView extends Component {
-  login() {
-    console.log('lets do this')
-    Linking.openURL(url)
-    .catch(err => {
-      console.error(err)
-    })
-  }
-
+class LoginView extends Component {
   render() {
     return (
       <View>
         <Text>Login</Text>
         <Button
           title="Login with Twitch"
-          onPress={this.login.bind(this)}
+          onPress={this.props.login}
           />
       </View>
     )
   }
 }
+
+export default connect(state => ({
+
+}), dispatch => ({
+  login: () => dispatch(login())
+}))(LoginView)
