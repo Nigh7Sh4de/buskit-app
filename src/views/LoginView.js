@@ -25,8 +25,7 @@ class LoginView extends Component {
   }
 }
 
-export default connect(state => ({
-
+export default connect(({}) => ({
 }), dispatch => ({
   login: () => dispatch(login())
 }))(LoginView)

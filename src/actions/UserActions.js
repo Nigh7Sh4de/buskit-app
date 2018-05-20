@@ -19,15 +19,18 @@ var parseUrl = url_string => {
   return result
 }
 
-
 export function login() {
-  const url = 'https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=https://buskit.tv/redirect&response_type=token+id_token&scope=openid'
+  const url = 'https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=buskit://buskit/redirect&response_type=code&scope=openid'
   return async dispatch => {
     dispatch(loginLoading())
     Linking.addEventListener('url', event => {
       let response = parseUrl(event.url)
       if (response.destination = 'redirect') {
-        dispatch(loginSuccess(response.params))
+        fetch('http://localhost:3000/auth/twitch/redirect?code=' + response.params.code)
+        .then(result => {
+          console.log(result)        
+          dispatch(loginSuccess(result))
+        })
       }
     })
     Linking.openURL(url)
