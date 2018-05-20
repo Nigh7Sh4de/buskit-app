@@ -5,7 +5,7 @@ import * as Actions from './'
 var parseUrl = url_string => {
   var result = { params: {} }
   var scheme = url_string.indexOf('buskit.tv/') + 10
-  var start = url_string.indexOf('#', scheme)
+  var start = url_string.indexOf('?', scheme)
   var i = start + 1
   
   result.destination = url_string.substring(scheme, start)
@@ -20,16 +20,22 @@ var parseUrl = url_string => {
 }
 
 export function login() {
-  const url = 'https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=buskit://buskit/redirect&response_type=code&scope=openid'
+  const url = 'https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=buskit://buskit.tv/redirect&response_type=code&scope=openid'
   return async dispatch => {
     dispatch(loginLoading())
     Linking.addEventListener('url', event => {
       let response = parseUrl(event.url)
       if (response.destination = 'redirect') {
-        fetch('http://localhost:3000/auth/twitch/redirect?code=' + response.params.code)
+        console.log(response.params)
+        console.log(response)
+        console.log(event.url)
+        fetch('http://192.168.2.14:3000/auth/twitch/redirect?code=' + response.params.code)
         .then(result => {
           console.log(result)        
           dispatch(loginSuccess(result))
+        })
+        .catch(err => {
+          console.error(err)
         })
       }
     })
