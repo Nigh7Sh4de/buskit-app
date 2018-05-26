@@ -1,37 +1,9 @@
-import { Linking } from 'react-native'
 import * as Actions from './'
+import {
+  Platform
+} from 'react-native'
 
-
-var parseUrl = url_string => {
-  var result = { params: {} }
-  var scheme = url_string.indexOf('buskit.tv/') + 10
-  var start = url_string.indexOf('?', scheme)
-  var i = start + 1
-  
-  result.destination = url_string.substring(scheme, start)
-  
-  while (i > 1) {
-    var eq = url_string.indexOf('=', i)
-    var next = url_string.indexOf('&', eq)
-    result.params[url_string.substring(i, eq)] = url_string.substring(eq + 1, next < 0 ? url_string.length : next)
-    i = next + 1
-  }
-  return result
-}
-
-export function listenToLinkingEvents() {
-  return async (dispatch, getState) => {
-    Linking.addEventListener('url', event => {
-      let response = parseUrl(event.url)
-      switch(response.destination) {
-        case 'redirect':
-          return dispatch(gotCode(response.params.code))
-        default:
-          return dispatch(loginError('Unkonwn linking event'))
-      }
-    })
-  }
-}
+import { openUrl } from './NativeActions'
 
 export function gotCode(code) {
   return async (dispatch) => {
@@ -50,7 +22,10 @@ export function login() {
   const url = 'https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=buskit://buskit.tv/redirect&response_type=code&scope=openid'
   return async dispatch => {
     dispatch(loginLoading())
-    Linking.openURL(url)
+    if (Platform.OS === 'web')
+      openLink(url)
+    else 
+      console.log('web login')
   }
 }
 
