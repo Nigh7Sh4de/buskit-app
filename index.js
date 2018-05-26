@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { AppRegistry } from 'react-native'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
+import Thunk from 'redux-thunk'
+import Logger from 'redux-logger'
 import { persistStore, persistReducer } from 'redux-persist'
 import { PersistGate } from 'redux-persist/lib/integration/react'
 import storage from 'redux-persist/lib/storage'
@@ -18,7 +19,7 @@ const persistConfig = {
 }
 
 const persistedReducers = persistReducer(persistConfig, reducers)
-const store = createStore(persistedReducers, applyMiddleware(thunk))
+const store = createStore(persistedReducers, applyMiddleware(Thunk, Logger))
 const persistor = persistStore(store)
 
 AppRegistry.registerComponent('Buskit', () => 

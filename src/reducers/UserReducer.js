@@ -1,9 +1,7 @@
 import * as Actions from '../actions'
 
 const initialState = {
-    user: {
-      
-    },
+    user: null,
     error: null,
     loading: false
 }

@@ -19,26 +19,37 @@ var parseUrl = url_string => {
   return result
 }
 
+export function listenToLinkingEvents() {
+  return async (dispatch, getState) => {
+    Linking.addEventListener('url', event => {
+      let response = parseUrl(event.url)
+      switch(response.destination) {
+        case 'redirect':
+          return dispatch(gotCode(response.params.code))
+        default:
+          return dispatch(loginError('Unkonwn linking event'))
+      }
+    })
+  }
+}
+
+export function gotCode(code) {
+  return async (dispatch) => {
+    try {
+      const codeResponse = await fetch(`http://192.168.2.14:3000/auth/twitch/redirect?code=${code}`)
+      const user = await codeResponse.json()
+      dispatch(loginSuccess(user))
+    }
+    catch(err) {
+      dispatch(loginError(err))
+    }
+  }
+}
+
 export function login() {
   const url = 'https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=buskit://buskit.tv/redirect&response_type=code&scope=openid'
   return async dispatch => {
     dispatch(loginLoading())
-    Linking.addEventListener('url', event => {
-      let response = parseUrl(event.url)
-      if (response.destination = 'redirect') {
-        console.log(response.params)
-        console.log(response)
-        console.log(event.url)
-        fetch('http://192.168.2.14:3000/auth/twitch/redirect?code=' + response.params.code)
-        .then(result => {
-          console.log(result)        
-          dispatch(loginSuccess(result))
-        })
-        .catch(err => {
-          console.error(err)
-        })
-      }
-    })
     Linking.openURL(url)
   }
 }
@@ -56,14 +67,15 @@ export function loginLoading() {
   }
 }
 
-export function loginSuccess(response) {
+export function loginSuccess(user) {
   return {
     type: Actions.USER_LOGIN_SUCCESS,
-    response
+    user
   }
 }
 
 export function loginError(error) {
+  console.error(error)
   return {
     type: Actions.USER_LOGIN_ERROR,
     error
