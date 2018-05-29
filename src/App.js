@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import { Actions, Router, Scene, Stack } from 'react-native-router-flux'
 
-import { listenToLinkingEvents } from 'src/actions/UserActions'
+import { listenToLinkingEvents } from 'src/actions/NativeActions'
 
 import LoginView from 'src/views/LoginView'
 import HomeView from 'src/views/HomeView'

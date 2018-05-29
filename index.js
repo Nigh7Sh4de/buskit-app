@@ -35,7 +35,7 @@ AppRegistry.registerComponent('Buskit', () =>
     }
   }
 )
-AppRegistry.runApplication('App', {
+AppRegistry.runApplication('Buskit', {
   initialProps: {},
   rootTag: document.getElementById('react-app')
 })
