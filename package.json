@@ -22,9 +22,10 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "babel-polyfill": "^6.26.0",
     "babel-jest": "22.1.0",
     "babel-loader": "^7.1.4",
+    "babel-plugin-react-native-web": "^0.7.3",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-react-native": "4.0.0",
     "jest": "22.1.4",
     "react-test-renderer": "16.2.0",

@@ -3,7 +3,7 @@ import {
   Platform
 } from 'react-native'
 
-import { openUrl } from './NativeActions'
+import { openLink } from './NativeActions'
 
 export function gotCode(code) {
   return async (dispatch) => {
@@ -22,7 +22,7 @@ export function login() {
   const url = 'https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=buskit://buskit.tv/redirect&response_type=code&scope=openid'
   return async dispatch => {
     dispatch(loginLoading())
-    if (Platform.OS === 'web')
+    if (Platform.OS !== 'web')
       openLink(url)
     else 
       console.log('web login')

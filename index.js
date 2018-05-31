@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppRegistry } from 'react-native'
+import { AppRegistry, Text } from 'react-native'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import Thunk from 'redux-thunk'
