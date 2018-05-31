@@ -12,16 +12,8 @@ import { Actions, Router, Scene, Stack } from 'react-native-router-flux'
 
 import { listenToLinkingEvents } from 'src/actions/NativeActions'
 
-import LoginView from 'src/views/LoginView'
-import HomeView from 'src/views/HomeView'
-
-
-const scenes = Actions.create(
-  <Stack key='root'>
-    <Scene key='home' path="/" component={HomeView} title="Home" />
-    <Scene key='login' path="/login" component={LoginView} title="Login" />
-  </Stack>
-)
+import MobileScenes from 'src/views/mobile'
+import WebScenes from 'src/views/web'
 
 class App extends Component {
   componentWillmount() {
@@ -29,8 +21,13 @@ class App extends Component {
   }
 
   render() {
+    const scenes = {
+      "ios": MobileScenes,
+      "android": MobileScenes,
+      "web": WebScenes,
+    }
     return (
-      <Router scenes={scenes} />
+      <Router scenes={scenes[Platform.OS]} />
     )
   }
 }
