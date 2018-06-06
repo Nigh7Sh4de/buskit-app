@@ -8,9 +8,15 @@ import {
 
 import { 
   login,
+  gotCode,
 } from 'src/actions/UserActions'
 
 class LoginView extends Component {
+  componentWillMount() {
+    if (this.props.match.path.indexOf('redirect') > 0)
+      this.props.onRedirect('TODO: parse code from search')
+  }
+
   render() {
     return (
       <View>
@@ -27,4 +33,5 @@ class LoginView extends Component {
 export default connect(({}) => ({
 }), dispatch => ({
   login: () => dispatch(login()),
+  onRedirect: code => dispatch(gotCode(code)),
 }))(LoginView)

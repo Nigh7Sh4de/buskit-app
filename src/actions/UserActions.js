@@ -19,13 +19,16 @@ export function gotCode(code) {
 }
 
 export function login() {
-  const url = 'https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=buskit://buskit.tv/redirect&response_type=code&scope=openid'
+  // const redirect_uri = 'buskit://buskit.tv/redirect'
+  const redirect_uri = 'http://localhost:8080/redirect'
+  // const url = 'https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=buskit://buskit.tv/redirect&response_type=code&scope=openid'
+  const url = `https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=${redirect_uri}&response_type=code&scope=openid`
   return async dispatch => {
     dispatch(loginLoading())
     if (Platform.OS !== 'web')
       openLink(url)
     else 
-      console.log('web login')
+      openLink(url)
   }
 }
 

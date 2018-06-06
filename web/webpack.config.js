@@ -58,9 +58,13 @@ module.exports = {
   output: {
     filename: 'bundle.web.js',
     path: path.resolve(appDirectory, 'web'),
-    publicPath: '/web/'
   },
 
+  devServer: {
+    contentBase: path.join(appDirectory, "web"),
+    historyApiFallback: true
+  },
+  
   devtool: 'source-map',
 
   module: {

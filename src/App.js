@@ -8,26 +8,25 @@ import {
   Button,
   Linking,
 } from 'react-native'
-import { Actions, Router, Scene, Stack } from 'react-native-router-flux'
+import { 
+  BrowserRouter as Router, 
+  Route,
+  Switch,
+} from 'react-router-dom'
+
+import Login from 'src/views/web/LoginView'
 
 import { listenToLinkingEvents } from 'src/actions/NativeActions'
 
-import MobileScenes from 'src/views/mobile'
-import WebScenes from 'src/views/web'
-
 class App extends Component {
-  componentWillmount() {
-    this.props.listen()
-  }
-
   render() {
-    const scenes = {
-      "ios": MobileScenes,
-      "android": MobileScenes,
-      "web": WebScenes,
-    }
     return (
-      <Router scenes={scenes[Platform.OS]} />
+      <Router>
+        <View>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/redirect" component={Login} />
+        </View>
+      </Router>
     )
   }
 }
@@ -35,5 +34,5 @@ class App extends Component {
 export default connect(({ user }) => ({
 
 }), dispatch => ({
-  listen: dispatch(listenToLinkingEvents())
+  listen: dispatch(listenToLinkingEvents()),
 }))(App)
