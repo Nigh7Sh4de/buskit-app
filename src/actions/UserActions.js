@@ -5,9 +5,10 @@ import {
 
 import { openLink } from './NativeActions'
 
-export function gotCode(code) {
+export function onAuthResponse(response) {
   return async (dispatch) => {
     try {
+      const code = response.get('code')
       const codeResponse = await fetch(`http://192.168.2.14:3000/auth/twitch/redirect?code=${code}`)
       const user = await codeResponse.json()
       dispatch(loginSuccess(user))
