@@ -33,12 +33,11 @@ export function login() {
   }
 }
 
-// export function signOut() {
-//     Googlelogin.signOut()
-//     return {
-//         type: Actions.USER_LOGOUT
-//     }
-// }
+export function logout() {
+    return {
+        type: Actions.USER_LOGOUT
+    }
+}
 
 export function loginLoading() {
   return {
