@@ -12,6 +12,7 @@ import {
 } from 'react-router-dom'
 
 import HomeView from 'src/views/web/HomeView'
+import StreamsView from 'src/views/web/streams'
 import LoginView from 'src/views/web/LoginView'
 
 
@@ -29,6 +30,7 @@ class Web extends Component {
       <Router>
         <View>
           <Route exact path="/" component={HomeView} />
+          <Route exact path="/streams" component={StreamsView} />
         </View>
       </Router>
     )
