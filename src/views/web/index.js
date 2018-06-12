@@ -1,12 +1,26 @@
-import React from 'react'
-import { Actions, Router, Scene, Stack } from 'react-native-router-flux'
+import React, { Component } from 'react'
+import {
+  View,
+} from 'react-native'
+import { 
+  BrowserRouter as Router, 
+  Route,
+  Switch,
+} from 'react-router-dom'
 
-import LoginView from 'src/views/web/LoginView'
 import HomeView from 'src/views/web/HomeView'
+import LoginView from 'src/views/web/LoginView'
 
-export default Actions.create(
-  <Stack key='root'>
-    <Scene key='home' path="/" component={HomeView} title="Home" />
-    <Scene key='login' path="/login" component={LoginView} title="Login" />
-  </Stack>
-)
+
+export default class extends Component {
+  render() {
+    return (
+    <Router>
+      <View>
+        <Route exact path="/" component={HomeView} />
+        <Route exact path="/redirect" component={LoginView} />
+      </View>
+    </Router>
+    )
+  }
+}

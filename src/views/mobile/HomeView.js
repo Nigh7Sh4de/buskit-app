@@ -6,8 +6,6 @@ import {
 	Button,
 } from 'react-native'
 
-import { Actions } from 'react-native-router-flux'
-
 export default class HomeView extends Component {
 	render() {
 		return (
@@ -15,7 +13,6 @@ export default class HomeView extends Component {
 				<Text>Home</Text>
         <Button 
           title="Login"
-					onPress={ () => Actions.login() }
 					/>
 			</View>
 		)

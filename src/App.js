@@ -1,38 +1,18 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import {
   Platform,
-  StyleSheet,
-  Text,
   View,
-  Button,
-  Linking,
 } from 'react-native'
-import { 
-  BrowserRouter as Router, 
-  Route,
-  Switch,
-} from 'react-router-dom'
 
-import Login from 'src/views/web/LoginView'
+import MobileViews from 'src/views/mobile'
+import WebViews from 'src/views/web'
 
-import { listenToLinkingEvents } from 'src/actions/NativeActions'
-
-class App extends Component {
+export default class App extends Component {
   render() {
-    return (
-      <Router>
-        <View>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/redirect" component={Login} />
-        </View>
-      </Router>
-    )
+    return Platform.select({
+      ios: <MobileViews />,
+      android: <MobileViews />,
+      web: <WebViews />
+    })
   }
 }
-
-export default connect(({ user }) => ({
-
-}), dispatch => ({
-  listen: dispatch(listenToLinkingEvents()),
-}))(App)
