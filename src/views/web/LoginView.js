@@ -13,8 +13,10 @@ import {
 
 class LoginView extends Component {
   componentWillMount() {
-    if (this.props.match.path === '/redirect')
+    if (this.props.match.path === '/redirect') {
       this.props.onAuthResponse(new URLSearchParams(this.props.location.search))
+      this.props.history.push('/')
+    }
   }
 
   render() {
