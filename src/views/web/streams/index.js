@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {
   View,
   Text,
+  Button,
 } from 'react-native'
 
 import { fetchStreams } from 'src/actions/StreamsActions.js'
@@ -17,7 +18,13 @@ class Streams extends Component {
       <View>
         <Text>Oh hello there streams</Text>
         {
-          this.props.streams.map(s => <Text key={s.id}>{s.title}</Text>)
+          this.props.streams.map(s => (
+            <Button 
+              key={s.id}
+              title={s.title}
+				    	onPress={() => this.props.history.push(`/streams/${s.id}`)}
+              />
+          ))
         }
         {
           !this.props.streams.length && <Text>No streams :/</Text>

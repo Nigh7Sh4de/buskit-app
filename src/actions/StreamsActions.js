@@ -1,5 +1,7 @@
 import * as actions from './'
 
+import { fetchUsers } from './UserActions'
+
 export function setStreams(streams) {
   return {
     type: actions.STREAMS_FETCH_SUCCESS,
@@ -15,6 +17,7 @@ export function fetchStreams() {
       }
     })
     const streams = await response.json()
-    dispatch(setStreams(streams))    
+    dispatch(setStreams(streams.data))
+    // dispatch(fetchUsers(streams.data.map(i => i.user_id)))
   }
 }

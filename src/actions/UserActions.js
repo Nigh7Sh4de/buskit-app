@@ -10,6 +10,7 @@ export function onAuthResponse(response) {
     try {
       const code = response.get('code')
       const codeResponse = await fetch(`http://192.168.2.14:3000/auth/twitch/redirect?code=${code}`)
+      console.log('response', codeResponse)
       const user = await codeResponse.json()
       dispatch(loginSuccess(user))
     }
@@ -39,9 +40,10 @@ export function logout() {
     }
 }
 
-export function loginLoading() {
+export function loginLoading(loading = true) {
   return {
-    type: Actions.USER_LOGIN_LOADING
+    type: Actions.USER_LOGIN_LOADING,
+    loading,
   }
 }
 
@@ -57,5 +59,30 @@ export function loginError(error) {
   return {
     type: Actions.USER_LOGIN_ERROR,
     error
+  }
+}
+
+export function setUsers(data = []) {
+  return {
+    type: Actions.USER_FETCH_DATA,
+    data,
+  }
+}
+
+export function fetchUsers(ids = []) {
+  return async dispatch => {
+    try {
+      dispatch(loginLoading())
+      const requests = ids.map(id => fetch(`http://192.168.2.14:3000/users/${id}`))
+      const response = await Promise.all(requests)
+      const users = await Promise.all(response.map(i => i.json()))
+      dispatch(setUsers(users.map(i => i.data)))
+    }
+    catch(err) {
+      console.error(err)
+    }
+    finally {
+      dispatch(loginLoading(false))
+    }
   }
 }

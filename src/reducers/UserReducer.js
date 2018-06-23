@@ -1,9 +1,10 @@
 import * as Actions from '../actions'
 
 const initialState = {
-    user: null,
-    error: null,
-    loading: false
+  data: [],
+  user: null,
+  error: null,
+  loading: false
 }
 
 export default (state = initialState, action) => {
@@ -21,12 +22,18 @@ export default (state = initialState, action) => {
         error: action.error,
         loading: false
       }
+    case Actions.USER_FETCH_DATA:
+      const data = action.data.filter(i => state.data.find(j => j.id !== i.id))
+      return {
+        ...state,
+        data: [...state.data, data],
+      }
     case Actions.USER_LOGIN_LOADING:
       return {
         ...state,
         user: null,
         error: null,
-        loading: true
+        loading: action.loading
       }
     case Actions.USER_LOGOUT:
       return {

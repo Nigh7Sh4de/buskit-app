@@ -13,6 +13,7 @@ import {
 
 import HomeView from 'src/views/web/HomeView'
 import StreamsView from 'src/views/web/streams'
+import StreamDetails from 'src/views/web/streams/StreamDetails'
 import LoginView from 'src/views/web/LoginView'
 
 
@@ -31,6 +32,7 @@ class Web extends Component {
         <View>
           <Route exact path="/" component={HomeView} />
           <Route exact path="/streams" component={StreamsView} />
+          <Route exact path="/streams/:id" component={StreamDetails} />
         </View>
       </Router>
     )
