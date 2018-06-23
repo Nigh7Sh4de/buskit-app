@@ -8,6 +8,8 @@ import {
 
 import { logout } from 'src/actions/UserActions'
 
+import NavbarView from 'src/views/web/nav'
+
 class HomeView extends Component {
 	_streams() {
 		
@@ -17,14 +19,6 @@ class HomeView extends Component {
 		return (
 			<View>
 				<Text>Home</Text>
-				<Button
-					title="Streams"
-					onPress={() => this.props.history.push('/streams')}
-					/>
-				<Button
-					title="Logout"
-					onPress={this.props.logout}
-					/>
 			</View>
 		)
 	}
@@ -34,7 +28,10 @@ export default connect(
 	({ }) => ({
 
 	}),
-	dispatch => ({
-		logout: () => dispatch(logout()),
+	(dispatch, ownProps) => ({
+		logout: () => {
+			dispatch(logout())
+			ownProps.history.push('/')
+		},
 	})
 )(HomeView)
