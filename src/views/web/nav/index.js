@@ -11,10 +11,15 @@ class NavbarView extends Component {
   constructor(props) {
     super(props)
     this.gotoStreams = this._gotoStreams.bind(this)
+    this.gotoProfile = this._gotoProfile.bind(this)
   }
+
   _gotoStreams() {
-    console.log('this', this.props)
     this.props.history.push('/streams')
+  }
+  
+  _gotoProfile() {
+    this.props.history.push('/profile')
   }
 
   render() {
@@ -28,9 +33,13 @@ class NavbarView extends Component {
           onPress={this.gotoStreams}
           />
         <Button
+          title="Profile"
+          onPress={this.gotoProfile}
+          />
+        <Button
           title="Logout"
           onPress={this.props.logout}
-          />    
+          />
       </View>
     )
   }
