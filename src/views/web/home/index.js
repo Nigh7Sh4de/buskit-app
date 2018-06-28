@@ -8,8 +8,6 @@ import {
 
 import { logout } from 'src/actions/UserActions'
 
-import NavbarView from 'src/views/web/nav'
-
 class HomeView extends Component {
 	_streams() {
 		
