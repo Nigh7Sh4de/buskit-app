@@ -12,6 +12,7 @@ class NavbarView extends Component {
     super(props)
     this.gotoStreams = this._gotoStreams.bind(this)
     this.gotoProfile = this._gotoProfile.bind(this)
+    this.gotoStart = this._gotoStart.bind(this)
   }
 
   _gotoStreams() {
@@ -20,6 +21,10 @@ class NavbarView extends Component {
   
   _gotoProfile() {
     this.props.history.push('/profile')
+  }
+  
+  _gotoStart() {
+    this.props.history.push('/start')
   }
 
   render() {
@@ -31,6 +36,10 @@ class NavbarView extends Component {
         <Button
           title="Streams"
           onPress={this.gotoStreams}
+          />
+        <Button
+          title="Start"
+          onPress={this.gotoStart}
           />
         <Button
           title="Profile"
