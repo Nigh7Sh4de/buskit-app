@@ -2,10 +2,22 @@ import React, { Component } from 'react'
 import {
   View,
   Text,
+  TextInput,
+  Button,
 } from 'react-native'
 import { connect } from 'react-redux'
 
+import TagSelector from 'src/views/web/start/TagSelector'
+
 class StreamView extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      tags: [],
+    }
+  }
+
   render() {
     const { stream } = this.props
 
@@ -18,6 +30,7 @@ class StreamView extends Component {
         <View>
           <Text>{JSON.stringify(stream) || "Nothing to see here"}</Text>
         </View>
+        <TagSelector onTagsChanged={tags => this.setState({ tags })} />
       </View>
     )
   }
