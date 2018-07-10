@@ -16,6 +16,14 @@ class StreamView extends Component {
     this.state = {
       tags: [],
     }
+    this.start = this._start.bind(this)
+  }
+
+  _start() {
+    const stream = {
+      tags: this.state.tags,
+    }
+    console.log('Go!', stream)
   }
 
   render() {
@@ -30,7 +38,13 @@ class StreamView extends Component {
         <View>
           <Text>{JSON.stringify(stream) || "Nothing to see here"}</Text>
         </View>
-        <TagSelector onTagsChanged={tags => this.setState({ tags })} />
+        <TagSelector 
+          onTagsChanged={tags => this.setState({ tags })} 
+        />
+        <Button 
+          title="Go!"
+          onPress={this.start}
+        />
       </View>
     )
   }
