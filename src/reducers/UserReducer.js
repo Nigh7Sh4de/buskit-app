@@ -23,10 +23,11 @@ export default (state = initialState, action) => {
         loading: false
       }
     case Actions.USER_FETCH_DATA:
-      const data = action.data.filter(i => state.data.find(j => j.id !== i.id))
+      const new_data = action.data.filter(u => !state.data.find(i => i.id === u.id))
+      const data = [ ...state.data, ...new_data ]
       return {
         ...state,
-        data: [...state.data, data],
+        data,
       }
     case Actions.USER_LOGIN_LOADING:
       return {

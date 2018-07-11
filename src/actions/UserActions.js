@@ -5,12 +5,22 @@ import {
 
 import { openLink } from './NativeActions'
 
+const USERS_DATA = [
+  {
+    id: 'u123',
+    display_name: 'Awesomesausse',
+  },
+  {
+    id: 'u124',
+    display_name: 'Mcpantsface',
+  },
+]
+
 export function onAuthResponse(response) {
   return async (dispatch) => {
     try {
       const code = response.get('code')
       const codeResponse = await fetch(`http://192.168.2.14:3000/auth/twitch/redirect?code=${code}`)
-      console.log('response', codeResponse)
       const user = await codeResponse.json()
       dispatch(loginSuccess(user))
     }
@@ -73,10 +83,11 @@ export function fetchUsers(ids = []) {
   return async dispatch => {
     try {
       dispatch(loginLoading())
-      const requests = ids.map(id => fetch(`http://192.168.2.14:3000/users/${id}`))
-      const response = await Promise.all(requests)
-      const users = await Promise.all(response.map(i => i.json()))
-      dispatch(setUsers(users.map(i => i.data)))
+      // const requests = ids.map(id => fetch(`http://192.168.2.14:3000/users/${id}`))
+      // const response = await Promise.all(requests)
+      // const users = await Promise.all(response.map(i => i.json()))
+      // dispatch(setUsers(users.map(i => i.data)))
+      dispatch(setUsers(USERS_DATA))
     }
     catch(err) {
       console.error(err)

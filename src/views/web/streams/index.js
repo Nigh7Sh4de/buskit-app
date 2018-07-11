@@ -7,18 +7,31 @@ import {
 } from 'react-native'
 
 import { fetchStreams } from 'src/actions/StreamsActions.js'
+import { fetchUsers } from 'src/actions/UserActions.js'
 
 class Streams extends Component {
   componentWillMount() {
     this.props.fetchStreams()
+    this.props.fetchUsers()
   }
 
   render() {
+    const { streams, users } = this.props
     return (
       <View>
-        <Text>Oh hello there streams</Text>
+        <Text>Oh hello there</Text>
         {
-          this.props.streams.map(s => (
+          users.map(u => (
+            <Button 
+              key={u.id}
+              title={u.display_name}
+              onPress={()=>{}}
+              />
+          ))
+        }
+        <Text>Streams</Text>
+        {
+          streams.map(s => (
             <Button 
               key={s.id}
               title={s.title}
@@ -35,10 +48,12 @@ class Streams extends Component {
 }
 
 export default connect(
-  ({ streams }) => ({
+  ({ streams, user }) => ({
     streams: streams.filtered_data,
+    users: user.data,
   }),
   dispatch => ({
-    fetchStreams: () => dispatch(fetchStreams())
+    fetchStreams: () => dispatch(fetchStreams()),
+    fetchUsers: () => dispatch(fetchUsers()),
   })
 )(Streams)
