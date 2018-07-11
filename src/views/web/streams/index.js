@@ -36,7 +36,7 @@ class Streams extends Component {
 
 export default connect(
   ({ streams }) => ({
-    streams: streams.data
+    streams: streams.filtered_data,
   }),
   dispatch => ({
     fetchStreams: () => dispatch(fetchStreams())

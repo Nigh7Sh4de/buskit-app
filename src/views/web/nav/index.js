@@ -4,8 +4,9 @@ import {
   Button,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { logout } from 'src/actions/UserActions';
+import { logout } from 'src/actions/UserActions'
 import { purgeStore } from 'src/lib/store'
+import Search from 'src/views/web/nav/Search'
 
 class NavbarView extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class NavbarView extends Component {
           title="Streams"
           onPress={this.gotoStreams}
           />
+        <Search />
         <Button
           title="Start"
           onPress={this.gotoStart}
