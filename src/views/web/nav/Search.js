@@ -6,7 +6,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 
-import { updateFilter } from 'src/actions/StreamsActions'
+import { updateFilter } from 'src/actions/NavActions'
 
 class Search extends Component {
   constructor(props) {

@@ -27,13 +27,6 @@ export function setStreams(streams) {
   }
 }
 
-export function updateFilter(filter) {
-  return {
-    type: actions.STREAMS_FILTER_UPDATED,
-    filter,
-  }
-}
-
 export function fetchStreams() {
   return async (dispatch, getState) => {
     // const response = await fetch(`http://192.168.2.14:3000/streams`, {

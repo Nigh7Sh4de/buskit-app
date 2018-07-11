@@ -2,6 +2,7 @@ import * as Actions from '../actions'
 
 const initialState = {
   data: [],
+  filtered_data: null,
   user: null,
   error: null,
   loading: false
@@ -28,6 +29,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         data,
+        filtered_data: state.filtered_data || data,
+      }
+    case Actions.FILTER_UPDATED:
+      const { filter } = action  
+      const filtered_data = state.data.filter(u => u.display_name.toLowerCase().indexOf(filter.text) >= 0)
+      return {
+        filtered_data,
       }
     case Actions.USER_LOGIN_LOADING:
       return {
