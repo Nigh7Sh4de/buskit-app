@@ -10,10 +10,7 @@ export default class HomeView extends Component {
 	render() {
 		return (
 			<View>
-				<Text>Home</Text>
-        <Button 
-          title="Login"
-					/>
+				<Text>Not a thing</Text>
 			</View>
 		)
 	}
