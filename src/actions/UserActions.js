@@ -103,3 +103,11 @@ export function fetchUsers(ids = []) {
     }
   }
 }
+
+export function followUser(id) {
+  return async (dispatch, getState) => {
+    const curUser = getState().user.user
+    //some endpoint request to follow the user
+    console.log(curUser.id, 'wants to follow', id)
+  }
+}
