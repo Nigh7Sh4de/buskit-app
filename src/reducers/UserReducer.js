@@ -36,7 +36,6 @@ export default (state = initialState, action) => {
       }
     case Actions.USER_LOGIN_LOADING:
       return { ...state,
-        user: null,
         error: null,
         loading: action.loading
       }

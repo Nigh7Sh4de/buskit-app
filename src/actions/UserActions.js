@@ -16,13 +16,19 @@ const USERS_DATA = [
   },
 ]
 
+const LOGIN_DATA = {
+  id: 'u666',
+  display_name: 'Test User',
+}
+
 export function onAuthResponse(response) {
   return async (dispatch) => {
     try {
-      const code = response.get('code')
-      const codeResponse = await fetch(`http://192.168.2.14:3000/auth/twitch/redirect?code=${code}`)
-      const user = await codeResponse.json()
-      dispatch(loginSuccess(user))
+      // const code = response.get('code')
+      // const codeResponse = await fetch(`http://192.168.2.14:3000/auth/twitch/redirect?code=${code}`)
+      // const user = await codeResponse.json()
+      // dispatch(loginSuccess(user))
+      dispatch(loginSuccess(LOGIN_DATA))
     }
     catch(err) {
       dispatch(loginError(err))
