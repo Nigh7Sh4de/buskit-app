@@ -25,7 +25,7 @@ class Streams extends Component {
             <Button 
               key={u.id}
               title={u.display_name}
-              onPress={()=>{}}
+              onPress={() => this.props.history.push(`/profile/${u.id}`)}
               />
           ))
         }

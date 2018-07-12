@@ -33,7 +33,7 @@ class Web extends Component {
             <SecuredRoute exact path="/start" component={StartView} />
             
             <Route exact path="/" component={StreamsView} />
-            <Route exact path="/profile" component={ProfileView} />
+            <Route exact path="/profile/:id" component={ProfileView} />
             <Route exact path="/streams" component={StreamsView} />
             <Route exact path="/streams/:id" component={StreamDetails} />
           </Switch>

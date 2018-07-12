@@ -11,15 +11,15 @@ class ProfileView extends Component {
 
     return (
       <View>
-        <Text>{JSON.stringify(user)}</Text>
+        <Text>Say hello to {user.display_name}!</Text>
       </View>
     )
   }
 }
 
 export default connect(
-  ({ user }) => ({
-    user: user.user,
+  ({ user }, ownProps) => ({
+      user: user.data.find(i => i.id === ownProps.match.params.id),
   }),
   dispatch => ({
 
