@@ -13,6 +13,7 @@ class NavbarView extends Component {
     super(props)
     this.gotoStreams = this._gotoStreams.bind(this)
     this.gotoStart = this._gotoStart.bind(this)
+    this.gotoLogin = this._gotoLogin.bind(this)
   }
 
   _gotoStreams() {
@@ -23,14 +24,21 @@ class NavbarView extends Component {
     this.props.history.push('/start')
   }
 
+  _gotoLogin() {
+    this.props.history.push('/login')
+  }
+
   render() {
+
+    const { loggedIn } = this.props
+
     return (
       <View style={{
         flex: 1,
         flexDirection: 'row',
       }}>
         <Button
-          title="Streams"
+          title="Home"
           onPress={this.gotoStreams}
           />
         <Search />
@@ -38,18 +46,26 @@ class NavbarView extends Component {
           title="Start"
           onPress={this.gotoStart}
           />
-        <Button
-          title="Logout"
-          onPress={this.props.logout}
-          />
+        {
+          loggedIn ? 
+            <Button
+              title="Logout"
+              onPress={this.props.logout}
+            />
+          :
+            <Button
+              title="Login"
+              onPress={this.gotoLogin}
+            />
+        }
       </View>
     )
   }
 }
 
 export default connect(
-  ({ }) => ({
-
+  ({ user }) => ({
+    loggedIn: !!user.user,
   }),
   dispatch => ({
     logout: () => {
