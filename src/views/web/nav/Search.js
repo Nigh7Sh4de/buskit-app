@@ -6,6 +6,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 
+import { nav as Style } from 'src/views/web/style'
 import { updateFilter } from 'src/actions/NavActions'
 
 class Search extends Component {
@@ -25,10 +26,13 @@ class Search extends Component {
 
   render() {
     return (
-      <View>
+      <View style={Style.search}>
         <TextInput 
+          style={Style.searchBox}
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
+          placeholder="Search"
+          placeholderTextColor="white"
         />
       </View>
     )
