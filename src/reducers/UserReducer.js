@@ -5,7 +5,7 @@ const initialState = {
   filtered_data: null,
   user: null,
   error: null,
-  loading: false
+  pending: false
 }
 
 export default (state = initialState, action) => {
@@ -13,13 +13,13 @@ export default (state = initialState, action) => {
     case Actions.USER_LOGIN_SUCCESS:
       return { ...state,
         user: action.user,
-        loading: false
+        pending: false
       }
     case Actions.USER_LOGIN_ERROR:
       return { ...state,
         user: null,
         error: action.error,
-        loading: false
+        pending: false
       }
     case Actions.USER_FETCH_DATA:
       const new_data = action.data.filter(u => !state.data.find(i => i.id === u.id))
@@ -34,15 +34,15 @@ export default (state = initialState, action) => {
       return { ...state,
         filtered_data,
       }
-    case Actions.USER_LOGIN_LOADING:
+    case Actions.USER_LOGIN_PENDING:
       return { ...state,
         error: null,
-        loading: action.loading
+        pending: action.pending
       }
     case Actions.USER_LOGOUT:
       return { ...state,
         user: null,
-        loading: false
+        pending: false
       }
     default: return state
   }

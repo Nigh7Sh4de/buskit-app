@@ -42,7 +42,7 @@ export function login() {
   // const url = 'https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=buskit://buskit.tv/redirect&response_type=code&scope=openid'
   const url = `https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=${redirect_uri}&response_type=code&scope=openid`
   return async dispatch => {
-    dispatch(loginLoading())
+    dispatch(loginPending())
     if (Platform.OS !== 'web')
       openLink(url)
     else 
@@ -56,10 +56,10 @@ export function logout() {
     }
 }
 
-export function loginLoading(loading = true) {
+export function loginPending(pending = true) {
   return {
-    type: Actions.USER_LOGIN_LOADING,
-    loading,
+    type: Actions.USER_LOGIN_PENDING,
+    pending,
   }
 }
 
@@ -88,7 +88,7 @@ export function setUsers(data = []) {
 export function fetchUsers(ids = []) {
   return async dispatch => {
     try {
-      dispatch(loginLoading())
+      dispatch(loginPending())
       // const requests = ids.map(id => fetch(`http://192.168.2.14:3000/users/${id}`))
       // const response = await Promise.all(requests)
       // const users = await Promise.all(response.map(i => i.json()))
@@ -99,7 +99,7 @@ export function fetchUsers(ids = []) {
       console.error(err)
     }
     finally {
-      dispatch(loginLoading(false))
+      dispatch(loginPending(false))
     }
   }
 }
