@@ -75,11 +75,10 @@ export const streams = StyleSheet.create({
     paddingTop: 10,
     paddingLeft: 50,
     paddingRight: 50,
+    height: height,
   },
   section: {
-    flex: 1,
     flexDirection: 'row',
-    alignItems: 'flex-start',
     backgroundColor: Colors.white,
     borderRadius: 5,
     padding: 10,
@@ -99,6 +98,8 @@ export const streams = StyleSheet.create({
     height: 250,
   },
   thumbText: {
-
+    color: Colors.dark,
+    fontWeight: '600',
+    fontSize: 20,
   },
 })

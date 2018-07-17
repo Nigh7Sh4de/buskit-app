@@ -22,35 +22,41 @@ class Streams extends Component {
   render() {
     const { streams, users } = this.props
     return (
-      <View style={Style.container}>
-        <ScrollView>
-          <Text style={Style.title}>Artists</Text>
-          <View style={Style.section}>
-            {
-              users.map(u => (
-                <UserThumb 
-                  key={u.id}
-                  user={u}
-                  />
-              ))
-            }
-          </View>
-          <Text style={Style.title}>Streams</Text>
-          <View style={[Style.section, { flexWrap: 'wrap' }]}>
-            {
-              streams.map(s => (
-                <StreamThumb 
-                  key={s.id}
-                  stream={s}
-                />
-              ))
-            }
-          </View>
+      <ScrollView style={Style.container}>
+        <Text style={Style.title}>Artists</Text>
+        <ScrollView horizontal style={Style.section}>
           {
-            !this.props.streams.length && <Text>No streams :/</Text>
+            users.map(u => (
+              <UserThumb 
+                key={u.id}
+                user={u}
+                />
+            ))
           }
         </ScrollView>
-      </View>
+        <Text style={Style.title}>Live Streams</Text>
+        <ScrollView horizontal style={Style.section}>
+          {
+            streams.map(s => (
+              <StreamThumb 
+                key={s.id}
+                stream={s}
+              />
+            ))
+          }
+        </ScrollView>
+        <Text style={Style.title}>Clips</Text>
+        <View style={[Style.section, { flexWrap: 'wrap' }]}>
+          {
+            streams.map(s => (
+              <StreamThumb 
+                key={s.id}
+                stream={s}
+              />
+            ))
+          }
+        </View>
+      </ScrollView>
     )
   }
 }

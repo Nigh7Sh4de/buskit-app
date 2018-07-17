@@ -31,7 +31,7 @@ export default class UserThumb extends Component {
             style={[Style.thumbImage, { borderRadius: 300 }]}
             source={{ uri: 'https://static-cdn.jtvnw.net/user-default-pictures/0ecbb6c3-fecb-4016-8115-aa467b7c36ed-profile_image-300x300.jpg' }}
           />
-          <Text>{display_name}</Text>
+          <Text style={Style.thumbText}>{display_name}</Text>
         </View>
       </View>
     )

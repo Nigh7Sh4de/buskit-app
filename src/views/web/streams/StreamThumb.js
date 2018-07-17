@@ -29,7 +29,18 @@ export default class StreamThumb extends Component {
           style={Style.thumbImage}
           source={{ uri: 'https://static-cdn.jtvnw.net/user-default-pictures/0ecbb6c3-fecb-4016-8115-aa467b7c36ed-profile_image-300x300.jpg' }}
         />
-        <Text>Stream</Text>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <Image
+            style={{
+              height: 40,
+              width: 40,
+            }}
+            source={{ uri: 'https://static-cdn.jtvnw.net/user-default-pictures/0ecbb6c3-fecb-4016-8115-aa467b7c36ed-profile_image-300x300.jpg' }}
+          />
+          <View>
+            <Text>Stream</Text>
+          </View>
+        </View>
       </View>
     )
   }
