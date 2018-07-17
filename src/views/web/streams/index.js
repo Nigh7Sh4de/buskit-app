@@ -3,11 +3,15 @@ import { connect } from 'react-redux'
 import {
   View,
   Text,
-  Button,
+  ScrollView,
 } from 'react-native'
 
+import { streams as Style} from 'src/views/web/style'
 import { fetchStreams } from 'src/actions/StreamsActions.js'
 import { fetchUsers } from 'src/actions/UserActions.js'
+
+import StreamThumb from 'src/views/web/streams/StreamThumb.js'
+import UserThumb from 'src/views/web/streams/UserThumb.js'
 
 class Streams extends Component {
   componentWillMount() {
@@ -18,30 +22,34 @@ class Streams extends Component {
   render() {
     const { streams, users } = this.props
     return (
-      <View>
-        <Text>Oh hello there</Text>
-        {
-          users.map(u => (
-            <Button 
-              key={u.id}
-              title={u.display_name}
-              onPress={() => this.props.history.push(`/profile/${u.id}`)}
-              />
-          ))
-        }
-        <Text>Streams</Text>
-        {
-          streams.map(s => (
-            <Button 
-              key={s.id}
-              title={s.title}
-				    	onPress={() => this.props.history.push(`/streams/${s.id}`)}
-              />
-          ))
-        }
-        {
-          !this.props.streams.length && <Text>No streams :/</Text>
-        }
+      <View style={Style.container}>
+        <ScrollView>
+          <Text style={Style.title}>Artists</Text>
+          <View style={Style.section}>
+            {
+              users.map(u => (
+                <UserThumb 
+                  key={u.id}
+                  user={u}
+                  />
+              ))
+            }
+          </View>
+          <Text style={Style.title}>Streams</Text>
+          <View style={[Style.section, { flexWrap: 'wrap' }]}>
+            {
+              streams.map(s => (
+                <StreamThumb 
+                  key={s.id}
+                  stream={s}
+                />
+              ))
+            }
+          </View>
+          {
+            !this.props.streams.length && <Text>No streams :/</Text>
+          }
+        </ScrollView>
       </View>
     )
   }

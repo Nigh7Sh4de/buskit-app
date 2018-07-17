@@ -11,6 +11,7 @@ import {
   Redirect,
 } from 'react-router-dom'
 
+import { app as Style } from 'src/views/web/style'
 import HomeView from 'src/views/web/home'
 import ProfileView from 'src/views/web/profile'
 import StartView from 'src/views/web/start'
@@ -24,21 +25,23 @@ import LoginView from 'src/views/web/LoginView'
 class Web extends Component {
   render() {
     return (
-      <Router>
-        <View>
-          <Route path="/" component={NavbarView} />
-          <Switch>
-            <Route exact path="/login" component={LoginView} />
-            <Route exact path="/redirect" component={LoginView} />
-            <SecuredRoute exact path="/start" component={StartView} />
-            
-            <Route exact path="/" component={StreamsView} />
-            <Route exact path="/profile/:id" component={ProfileView} />
-            <Route exact path="/streams" component={StreamsView} />
-            <Route exact path="/streams/:id" component={StreamDetails} />
-          </Switch>
-        </View>
-      </Router>
+      <View>
+        <Router>
+          <View style={Style.container}>
+            <Route path="/" component={NavbarView} />
+            <Switch>
+              <Route exact path="/login" component={LoginView} />
+              <Route exact path="/redirect" component={LoginView} />
+              <SecuredRoute exact path="/start" component={StartView} />
+              
+              <Route exact path="/" component={StreamsView} />
+              <Route exact path="/profile/:id" component={ProfileView} />
+              <Route exact path="/streams" component={StreamsView} />
+              <Route exact path="/streams/:id" component={StreamDetails} />
+            </Switch>
+          </View>
+        </Router>
+      </View>
     )
   }
 }

@@ -1,10 +1,23 @@
 import {
   StyleSheet,
+  Dimensions,
 } from 'react-native'
 
 const Colors = {
   primary: '#209A71',
+  light: '#F2F2F2',
+  dark: '#494343',
+  white: '#FFFFFF',
 }
+
+const { width, height } = Dimensions.get('window')
+
+export const app = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.light,
+    paddingBottom: 10000,
+  },
+})
 
 export const nav = StyleSheet.create({
   container: {
@@ -49,4 +62,43 @@ export const nav = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
   }
+})
+
+export const streams = StyleSheet.create({
+  title: {
+    fontStyle: 'italic',
+    marginLeft: 5,
+    color: Colors.dark,
+  },
+  container: {
+    flex: 1,
+    paddingTop: 10,
+    paddingLeft: 50,
+    paddingRight: 50,
+  },
+  section: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    backgroundColor: Colors.white,
+    borderRadius: 5,
+    padding: 10,
+  },
+  thumb: {
+    // flex: 1,
+    minWidth: 250,
+    marginRight: 20,
+    alignItems: 'flex-start',
+  },
+  thumbInner: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  thumbImage: {
+    width: 250,
+    height: 250,
+  },
+  thumbText: {
+
+  },
 })

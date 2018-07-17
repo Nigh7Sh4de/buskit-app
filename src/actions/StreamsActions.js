@@ -6,17 +6,32 @@ const STREAM_DATA = [
   {
     id: '123',
     title: 'The first stream',
-    user_id: 'someuser',
+    user_id: 'u123',
   }, 
   {
     id: '145',
     title: 'The second stream',
-    user_id: 'someotheruser',
+    user_id: 'u145',
   },
   {
     id: '197',
     title: 'The third stream',
-    user_id: 'somethirduser',
+    user_id: 'u197',
+  },
+  {
+    id: '124',
+    title: 'The fourth stream',
+    user_id: 'u124',
+  }, 
+  {
+    id: '146',
+    title: 'The fifth stream',
+    user_id: 'u146',
+  },
+  {
+    id: '198',
+    title: 'The sixth stream',
+    user_id: 'u198',
   },
 ]
 
