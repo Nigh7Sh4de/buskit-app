@@ -21,8 +21,10 @@ class Streams extends Component {
 
   render() {
     const { streams, users } = this.props
-    return (
-      <ScrollView style={Style.container}>
+    let artists, liveStreams, clips
+
+    if (users.length) artists = (
+      <View>
         <Text style={Style.title}>Artists</Text>
         <ScrollView horizontal style={Style.section}>
           {
@@ -30,10 +32,16 @@ class Streams extends Component {
               <UserThumb 
                 key={u.id}
                 user={u}
-                />
+                redirect={this.props.history.push}
+              />
             ))
           }
         </ScrollView>
+      </View>
+    )
+
+    if (streams.length) liveStreams = (
+      <View>
         <Text style={Style.title}>Live Streams</Text>
         <ScrollView horizontal style={Style.section}>
           {
@@ -41,10 +49,16 @@ class Streams extends Component {
               <StreamThumb 
                 key={s.id}
                 stream={s}
+                redirect={this.props.history.push}
               />
             ))
           }
         </ScrollView>
+      </View>
+    )
+    
+    if (streams.length) clips = (
+      <View>
         <Text style={Style.title}>Clips</Text>
         <View style={[Style.section, { flexWrap: 'wrap' }]}>
           {
@@ -52,10 +66,24 @@ class Streams extends Component {
               <StreamThumb 
                 key={s.id}
                 stream={s}
+                redirect={this.props.history.push}
               />
             ))
           }
         </View>
+      </View>
+    )
+
+    const empty = !artists && !liveStreams && !clips
+
+    return (
+      <ScrollView style={Style.container}>
+        {artists}
+        {liveStreams}
+        {clips}
+        {
+          empty && <Text style={Style.empty}>🤔 No search results</Text>
+        }
       </ScrollView>
     )
   }

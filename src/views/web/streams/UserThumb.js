@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {
   View,
-  TouchableHighlight,
+  TouchableOpacity,
   Image,
   Text,
 } from 'react-native'
@@ -18,7 +18,8 @@ export default class UserThumb extends Component {
   }
   
   _gotoLogin() {
-    this.props.redirect(`/users/${this.props.url}`)
+    console.log(this.props.user)
+    this.props.redirect(`/profile/${this.props.user.id}`)
   }
 
   render() {
@@ -26,13 +27,17 @@ export default class UserThumb extends Component {
     const { display_name } = user
     return (
       <View style={Style.thumb}>
-        <View style={Style.thumbInner}>
-          <Image 
-            style={[Style.thumbImage, { borderRadius: 300 }]}
-            source={{ uri: 'https://static-cdn.jtvnw.net/user-default-pictures/0ecbb6c3-fecb-4016-8115-aa467b7c36ed-profile_image-300x300.jpg' }}
-          />
-          <Text style={Style.thumbText}>{display_name}</Text>
-        </View>
+        <TouchableOpacity 
+          onPress={this.gotoStream}
+        >
+          <View style={[Style.thumbInner, { alignItems: 'center' }]}>
+            <Image 
+              style={[Style.thumbImage, { borderRadius: 300 }]}
+              source={{ uri: 'https://static-cdn.jtvnw.net/user-default-pictures/0ecbb6c3-fecb-4016-8115-aa467b7c36ed-profile_image-300x300.jpg' }}
+            />
+            <Text style={Style.thumbText}>{display_name}</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     )
   }

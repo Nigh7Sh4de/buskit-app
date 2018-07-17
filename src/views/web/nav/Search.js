@@ -32,7 +32,6 @@ class Search extends Component {
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
           placeholder="Search"
-          placeholderTextColor="white"
         />
       </View>
     )

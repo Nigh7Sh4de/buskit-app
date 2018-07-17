@@ -14,33 +14,32 @@ export default class StreamThumb extends Component {
   constructor(props) {
     super(props)
    
-    this.gotoStream = this._gotoLogin.bind(this)
+    this.gotoStream = this._gotoStream.bind(this)
   }
   
-  _gotoLogin() {
-    this.props.redirect(`/streams/${this.props.url}`)
+  _gotoStream() {
+    this.props.redirect(`/streams/${this.props.stream.id}`)
   }
 
   render() {
-    console.log(this.props.stream)
+    const { stream } = this.props
+    const { title, user_id } = stream
     return (
       <View style={Style.thumb}>
-        <Image 
-          style={Style.thumbImage}
-          source={{ uri: 'https://static-cdn.jtvnw.net/user-default-pictures/0ecbb6c3-fecb-4016-8115-aa467b7c36ed-profile_image-300x300.jpg' }}
-        />
-        <View style={{ flex: 1, flexDirection: 'row' }}>
-          <Image
-            style={{
-              height: 40,
-              width: 40,
-            }}
-            source={{ uri: 'https://static-cdn.jtvnw.net/user-default-pictures/0ecbb6c3-fecb-4016-8115-aa467b7c36ed-profile_image-300x300.jpg' }}
-          />
-          <View>
-            <Text>Stream</Text>
+        <TouchableHighlight
+          onPress={this.gotoStream}
+        >
+          <View style={Style.thumbInner}>
+            <Image 
+              style={Style.thumbImage}
+              source={{ uri: 'https://static-cdn.jtvnw.net/user-default-pictures/0ecbb6c3-fecb-4016-8115-aa467b7c36ed-profile_image-300x300.jpg' }}
+            />
+            <View>
+              <Text style={{ fontWeight: '400', fontSize: 16 }}>{title}</Text>
+              <Text style={{ fontWeight: '200', fontSize: 16 }}>{user_id}</Text>
+            </View>
           </View>
-        </View>
+        </TouchableHighlight>
       </View>
     )
   }

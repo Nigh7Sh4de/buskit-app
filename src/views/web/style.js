@@ -65,10 +65,16 @@ export const nav = StyleSheet.create({
 })
 
 export const streams = StyleSheet.create({
+  empty: {
+    color: Colors.dark,
+    fontWeight: 600,
+    fontSize: 24,
+  },
   title: {
-    fontStyle: 'italic',
     marginLeft: 5,
     color: Colors.dark,
+    fontWeight: '200',
+    fontSize: 20,
   },
   container: {
     flex: 1,
@@ -80,18 +86,19 @@ export const streams = StyleSheet.create({
   section: {
     flexDirection: 'row',
     backgroundColor: Colors.white,
+    marginTop: 2,
+    marginBottom: 20,
     borderRadius: 5,
     padding: 10,
   },
   thumb: {
-    // flex: 1,
     minWidth: 250,
     marginRight: 20,
+    marginBottom: 20,
     alignItems: 'flex-start',
   },
   thumbInner: {
     flex: 1,
-    alignItems: 'center',
   },
   thumbImage: {
     width: 250,

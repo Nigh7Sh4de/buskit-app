@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
       }
     case actions.FILTER_UPDATED:
       const { filter } = action
-      const filtered_data = state.data.filter(i => i.title.toLowerCase().indexOf(filter.text) >= 0)
+      const filtered_data = state.data.filter(i => i.title.toLowerCase().indexOf(filter.text.toLowerCase()) >= 0)
       return { ...state, 
         filtered_data,
       }
