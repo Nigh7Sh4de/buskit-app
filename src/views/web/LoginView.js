@@ -3,9 +3,11 @@ import { connect } from 'react-redux'
 import {
   View,
   Text,
-  Button,
+  TouchableHighlight,
+  Image,
 } from 'react-native'
 
+import { login as Style } from 'src/views/web/style'
 import { 
   login,
   onAuthResponse,
@@ -21,12 +23,25 @@ class LoginView extends Component {
 
   render() {
     return (
-      <View>
-        <Text>Login</Text>
-        <Button
-          title="Login with Twitch"
-          onPress={this.props.login}
+      <View style={Style.container}>
+        <View style={Style.welcome}>
+          <Text style={Style.welcomeText}>Welcome to </Text>
+          <Image
+            source={require('src/res/images/buskit-logo-colour.png')}
+            style={{ height: 72, width: 256 }}
           />
+        </View>
+        <TouchableHighlight
+          onPress={this.props.login}
+        >
+          <View style={Style.button}>
+            <Image
+              source={require('src/res/images/Glitch_White_RGB.png')}
+              style={{ height: 24, width: 24 }}
+            />
+            <Text style={Style.buttonText}>Login with Twitch</Text>
+          </View>
+        </TouchableHighlight>
       </View>
     )
   }

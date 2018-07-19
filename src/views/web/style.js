@@ -5,10 +5,13 @@ import {
 
 const Colors = {
   primary: '#209A71',
+  twitch: '#6441A4',
   light: '#F2F2F2',
   dark: '#494343',
   white: '#FFFFFF',
 }
+
+const borderRadius = 5
 
 const { width, height } = Dimensions.get('window')
 
@@ -33,7 +36,6 @@ export const nav = StyleSheet.create({
   },
   button: {
     justifyContent: 'center',
-    textTransform: 'uppercase',
     marginLeft: 10,
     marginRight: 10,
   },
@@ -58,7 +60,7 @@ export const nav = StyleSheet.create({
     flex: 1,
     alignSelf: 'stretch',
     backgroundColor: '#ffffff',
-    borderRadius: 5,
+    borderRadius,
     paddingLeft: 10,
     paddingRight: 10,
   }
@@ -67,7 +69,7 @@ export const nav = StyleSheet.create({
 export const streams = StyleSheet.create({
   empty: {
     color: Colors.dark,
-    fontWeight: 600,
+    fontWeight: "600",
     fontSize: 24,
   },
   title: {
@@ -88,7 +90,7 @@ export const streams = StyleSheet.create({
     backgroundColor: Colors.white,
     marginTop: 2,
     marginBottom: 20,
-    borderRadius: 5,
+    borderRadius,
     padding: 10,
   },
   thumb: {
@@ -108,5 +110,35 @@ export const streams = StyleSheet.create({
     color: Colors.dark,
     fontWeight: '600',
     fontSize: 20,
+  },
+})
+
+export const login = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  welcome: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 150,
+  },
+  welcomeText: {
+    fontSize: 56,
+    paddingBottom: 18,
+  },
+  button: {
+    backgroundColor: Colors.twitch,
+    flex: 1,
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    borderRadius,
+  },
+  buttonText: {
+    color: Colors.white,
+    fontSize: 20,
+    marginLeft: 10,
   },
 })
