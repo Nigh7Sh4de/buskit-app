@@ -128,6 +128,7 @@ export const login = StyleSheet.create({
     height: 150,
   },
   welcomeText: {
+    color: Colors.dark,
     fontSize: 56,
     paddingBottom: 18,
   },
