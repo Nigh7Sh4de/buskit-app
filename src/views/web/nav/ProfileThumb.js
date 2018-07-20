@@ -48,7 +48,7 @@ class ProfileThumb extends Component {
           style={Style.button}
           onPress={this.props.logout}
         >
-          <Text>LOGOUT</Text>
+          <Text style={Style.buttonText}>LOG OUT</Text>
         </TouchableHighlight>
       </View>
     )

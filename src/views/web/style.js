@@ -42,6 +42,10 @@ export const nav = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
   },
+  buttonText: {
+    fontWeight: '600',
+    color: Colors.white,
+  },
   profile: {
     flex: 1,
     flexDirection: 'row',
