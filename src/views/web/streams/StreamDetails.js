@@ -17,11 +17,12 @@ class StreamDetails extends Component {
   }
 
   componentDidMount() {
-    new Twitch.Embed("twitch-embed", {
-      width: 854,
-      height: 480,
-      channel: "ninja"
-    })
+    if (this.props.stream && this.props.user)
+      return new Twitch.Embed("twitch-embed", {
+        width: 854,
+        height: 480,
+        channel: "ninja"
+      })
   }
 
   _followArtist() {
@@ -34,6 +35,12 @@ class StreamDetails extends Component {
 
   render() {
     const { stream, user } = this.props
+    if (!stream || !user) return (
+      <View style={Style.container}>
+        <Text style={Style.title}>Oops doesn't look like there's anything here 😦</Text>
+      </View>
+    )
+
     return (
       <View style={Style.container}>
         <View style={Style.info}>
