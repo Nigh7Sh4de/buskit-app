@@ -32,7 +32,7 @@ export default class UserThumb extends Component {
         >
           <View style={[Style.thumbInner, { alignItems: 'center' }]}>
             <Image 
-              style={[Style.thumbImage, { borderRadius: 300 }]}
+              style={[Style.thumbImage, { borderRadius: 1000 }]}
               source={{ uri: 'https://static-cdn.jtvnw.net/user-default-pictures/0ecbb6c3-fecb-4016-8115-aa467b7c36ed-profile_image-300x300.jpg' }}
             />
             <Text style={Style.thumbText}>{display_name}</Text>

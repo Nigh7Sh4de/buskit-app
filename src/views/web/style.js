@@ -4,11 +4,14 @@ import {
 } from 'react-native'
 
 const Colors = {
-  primary: '#209A71',
-  twitch: '#6441A4',
-  light: '#F2F2F2',
+  primary: '#209a71',
+  secondary: '#ff2a00',
+  pink: '#c17278',
+  purple: '#986787',
+  twitch: '#6441a4',
+  light: '#f2f2f2',
   dark: '#494343',
-  white: '#FFFFFF',
+  white: '#ffffff',
 }
 
 const borderRadius = 5
@@ -94,7 +97,7 @@ export const streams = StyleSheet.create({
     padding: 10,
   },
   thumb: {
-    minWidth: 250,
+    width: 200,
     marginRight: 20,
     marginBottom: 20,
     alignItems: 'flex-start',
@@ -103,8 +106,8 @@ export const streams = StyleSheet.create({
     flex: 1,
   },
   thumbImage: {
-    width: 250,
-    height: 250,
+    width: 200,
+    height: 200,
   },
   thumbText: {
     color: Colors.dark,
@@ -146,10 +149,9 @@ export const login = StyleSheet.create({
 export const profile = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10,
-    paddingLeft: 50,
-    paddingRight: 50,
-    height: height,
+    paddingVertical: 10,
+    paddingHorizontal: 100,
+    height,
   },
   section: {
     flexDirection: 'row',
@@ -160,18 +162,37 @@ export const profile = StyleSheet.create({
     padding: 10,
   },
   info: {
-    flex: 1,
     flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 50,
   },
   infoInner: {
-    marginLeft: 20,
+    flex: 1,
+    marginHorizontal: 20,
+  },
+  button: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+  },
+  buttonText: {
+    color: Colors.white,
+    fontWeight: '600',
+    fontSize: 16,
+    borderRadius,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: Colors.primary,
   },
   title: {
-    marginLeft: 5,
-    marginBottom: 20,
+    marginBottom: 10,
     color: Colors.dark,
-    fontWeight: '200',
-    fontSize: 24,
+    fontWeight: '400',
+    fontSize: 36,
+  },
+  description: {
+    fontSize: 14,
+    fontWeight: '400',
   },
   thumbImage: {
     width: 250,
@@ -179,11 +200,16 @@ export const profile = StyleSheet.create({
   },
   tagList: {
     flexDirection: 'row',
+    marginBottom: 10,
   },
   tag: {
-    // flex: 1,
-    color: Colors.dark,
     fontWeight: '600',
-    margin: 5,
+    fontSize: 14,
+    marginRight: 10,
+    paddingHorizontal: 6,
+    paddingVertical: 3,
+    backgroundColor: Colors.purple,
+    color: Colors.white,
+    borderRadius,
   },
 })
