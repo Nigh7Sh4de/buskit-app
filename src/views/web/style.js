@@ -170,6 +170,18 @@ export const profile = StyleSheet.create({
     flex: 1,
     marginHorizontal: 20,
   },
+  live: {
+    backgroundColor: Colors.secondary,
+    paddingVertical: 10,
+    borderRadius,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  liveText: {
+    color: Colors.white,
+    fontSize: 20,
+    fontWeight: '600',
+  },
   button: {
     position: 'absolute',
     right: 0,

@@ -20,16 +20,21 @@ class ProfileView extends PureComponent {
     super(props)
 
     this.followArtist = this._followArtist.bind(this)
+    this.gotoStream = this._gotoStream.bind(this)
   }
 
   _followArtist() {
     this.props.follow(this.props.user.id)
   }
 
+  _gotoStream() {
+    this.props.history.push(`/streams/${this.props.stream.id}`)
+  }
+
   render() {
     const { user, streams } = this.props
 
-    let clips = <Text>Tag 1No clips</Text>
+    let clips = <Text>No clips</Text>
     if (streams.length) clips = (
       <View style={[Style.section, { flexWrap: 'wrap' }]}>
         {
@@ -42,6 +47,15 @@ class ProfileView extends PureComponent {
           ))
         }
       </View>
+    )
+
+    const liveNowButton = (
+      <TouchableHighlight
+        style={Style.live}
+        onPress={this.gotoStream}
+      >
+        <Text style={Style.liveText}>🎵 Live Now</Text>
+      </TouchableHighlight>
     )
 
     return (
@@ -67,6 +81,9 @@ class ProfileView extends PureComponent {
             </TouchableHighlight>
           </View>
         </View>
+        {
+          this.props.stream && liveNowButton
+        }
         <View style={{flex: 1}}>
           <Text style={Style.title}>Clips</Text>
           {clips}
@@ -77,8 +94,9 @@ class ProfileView extends PureComponent {
 }
 
 export default connect(
-  ({ users, streams }, ownProps) => ({
-      user: users.data.find(i => i.id === ownProps.match.params.id),
+  ({ users, streams }, props) => ({
+      user: users.data.find(i => i.id === props.match.params.id),
+      stream: streams.data.find(i => i.user_id === props.match.params.id),
       streams: streams.data,
   }),
   dispatch => ({
