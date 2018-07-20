@@ -11,8 +11,8 @@ class SecuredRoute extends Route {
   }
 }
 
-export default connect(({ user }) => ({
-  loggedIn: !!user.user,
+export default connect(({ users }) => ({
+  loggedIn: !!users.user,
 }), dispatch => ({
 
 }))(SecuredRoute)

@@ -4,6 +4,6 @@ import UserReducer from './UserReducer'
 import StreamsReducer from './StreamsReducer'
 
 export default combineReducers({
-  user: UserReducer,
+  users: UserReducer,
   streams: StreamsReducer,
 })

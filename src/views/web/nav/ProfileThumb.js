@@ -78,9 +78,9 @@ class ProfileThumb extends Component {
 
 
 export default connect(
-  ({ user }) => ({
-    loggedIn: !!user.user,
-    pending: user.pending,
+  ({ users }) => ({
+    loggedIn: !!users.user,
+    pending: users.pending,
   }),
   dispatch => ({
     logout: () => {

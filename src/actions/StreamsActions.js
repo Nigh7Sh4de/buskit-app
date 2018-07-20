@@ -46,7 +46,7 @@ export function fetchStreams() {
   return async (dispatch, getState) => {
     // const response = await fetch(`http://192.168.2.14:3000/streams`, {
     //   headers: {
-    //     Authorization: `Bearer ${getState().user.user.token}`
+    //     Authorization: `Bearer ${getState().users.user.token}`
     //   }
     // })
     // const streams = await response.json()

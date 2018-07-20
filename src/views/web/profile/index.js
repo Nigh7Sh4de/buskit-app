@@ -77,8 +77,8 @@ class ProfileView extends PureComponent {
 }
 
 export default connect(
-  ({ user, streams }, ownProps) => ({
-      user: user.data.find(i => i.id === ownProps.match.params.id),
+  ({ users, streams }, ownProps) => ({
+      user: users.data.find(i => i.id === ownProps.match.params.id),
       streams: streams.data,
   }),
   dispatch => ({

@@ -47,8 +47,8 @@ class Web extends Component {
 }
 
 export default connect(
-  ({ user }) => ({
-    user
+  ({ users }) => ({
+    users
   }),
   dispatch => ({
 

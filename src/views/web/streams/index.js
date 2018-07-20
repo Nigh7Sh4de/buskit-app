@@ -90,9 +90,9 @@ class Streams extends Component {
 }
 
 export default connect(
-  ({ streams, user }) => ({
+  ({ streams, users }) => ({
     streams: streams.filtered_data || [],
-    users: user.filtered_data || [],
+    users: users.filtered_data || [],
   }),
   dispatch => ({
     fetchStreams: () => dispatch(fetchStreams()),
