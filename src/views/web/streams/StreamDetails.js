@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {
   Text,
   View,
+  ScrollView,
   TouchableHighlight,
 } from 'react-native'
 import { connect } from 'react-redux'
@@ -42,7 +43,7 @@ class StreamDetails extends Component {
     )
 
     return (
-      <View style={Style.container}>
+      <ScrollView style={Style.container}>
         <View style={Style.info}>
           <Text style={Style.name}>
             Now playing
@@ -73,7 +74,7 @@ class StreamDetails extends Component {
             <Text style={Style.buttonText}>$ Tip</Text>
           </TouchableHighlight>
         </View>
-      </View>
+      </ScrollView>
     )
   }
 }

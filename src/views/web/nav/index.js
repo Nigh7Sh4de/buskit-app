@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {
   View,
-  TouchableHighlight,
+  TouchableOpacity,
   Image,
 } from 'react-native'
 import { connect } from 'react-redux'
@@ -33,14 +33,14 @@ class NavbarView extends Component {
   render() {
     return (
       <View style={Style.container}>
-        <TouchableHighlight
+        <TouchableOpacity
           onPress={this.gotoStreams}
         >
           <Image
             style={{ height: 36, width: 126 }}
             source={require('src/res/images/buskit-logo.png')}
           />
-        </TouchableHighlight>
+        </TouchableOpacity>
         <Search updateSearch={this.updateSearch} />
         <ProfileThumb redirect={this.props.history.push} />
       </View>

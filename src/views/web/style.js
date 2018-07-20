@@ -88,8 +88,8 @@ export const streams = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 10,
-    paddingLeft: 50,
-    paddingRight: 50,
+    paddingBottom: 100,
+    paddingHorizontal: 50,
     height: height,
   },
   section: {
@@ -233,14 +233,14 @@ export const profile = StyleSheet.create({
 
 export const stream = StyleSheet.create({
   container: {
-    paddingVertical: 20,
+    paddingVertical: 10,
     paddingHorizontal: 100,
     height,
   },
   info: {
     alignSelf: 'center',
     marginLeft: -100,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   name: {
     fontSize: 36,
@@ -272,7 +272,7 @@ export const stream = StyleSheet.create({
   },
   stream: {
     alignItems: 'center',
-    padding: 30,
+    padding: 10,
     backgroundColor: Colors.white,
     alignSelf: 'center',
     borderRadius,
@@ -280,7 +280,7 @@ export const stream = StyleSheet.create({
   actions: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginVertical: 30,
+    marginVertical: 10,
   },
   buttonFollow: {
     borderRadius,

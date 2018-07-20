@@ -58,7 +58,7 @@ class ProfileThumb extends Component {
         style={Style.button}
         onPress={this.gotoLogin}
       >
-        <Text>LOGIN</Text>
+        <Text style={Style.buttonText}>LOGIN</Text>
       </TouchableHighlight>
     )
 
