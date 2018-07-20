@@ -1,15 +1,12 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import {
-  Text,
   View,
   TextInput,
 } from 'react-native'
-import { connect } from 'react-redux'
 
 import { nav as Style } from 'src/views/web/style'
-import { updateFilter } from 'src/actions/NavActions'
 
-class Search extends Component {
+export default class Search extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -19,9 +16,7 @@ class Search extends Component {
   }
 
   componentDidUpdate() {
-    this.props.updateFilter({
-      text: this.state.text,
-    })
+    this.props.updateSearch(this.state.text)
   }
 
   render() {
@@ -37,9 +32,3 @@ class Search extends Component {
     )
   }
 }
-
-export default connect(({ }) => ({
-
-}), dispatch => ({
-  updateFilter: filter => dispatch(updateFilter(filter)),
-}))(Search)
