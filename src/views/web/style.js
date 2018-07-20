@@ -69,7 +69,7 @@ export const nav = StyleSheet.create({
 export const streams = StyleSheet.create({
   empty: {
     color: Colors.dark,
-    fontWeight: "600",
+    fontWeight: '600',
     fontSize: 24,
   },
   title: {
@@ -140,5 +140,50 @@ export const login = StyleSheet.create({
     color: Colors.white,
     fontSize: 20,
     marginLeft: 10,
+  },
+})
+
+export const profile = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 10,
+    paddingLeft: 50,
+    paddingRight: 50,
+    height: height,
+  },
+  section: {
+    flexDirection: 'row',
+    backgroundColor: Colors.white,
+    marginTop: 2,
+    marginBottom: 20,
+    borderRadius,
+    padding: 10,
+  },
+  info: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  infoInner: {
+    marginLeft: 20,
+  },
+  title: {
+    marginLeft: 5,
+    marginBottom: 20,
+    color: Colors.dark,
+    fontWeight: '200',
+    fontSize: 24,
+  },
+  thumbImage: {
+    width: 250,
+    height: 250,
+  },
+  tagList: {
+    flexDirection: 'row',
+  },
+  tag: {
+    // flex: 1,
+    color: Colors.dark,
+    fontWeight: '600',
+    margin: 5,
   },
 })
