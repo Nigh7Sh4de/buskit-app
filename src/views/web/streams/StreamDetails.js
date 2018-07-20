@@ -2,10 +2,20 @@ import React, { Component } from 'react'
 import {
   Text,
   View,
+  TouchableHighlight,
 } from 'react-native'
 import { connect } from 'react-redux'
 
+import { stream as Style } from 'src/views/web/style'
+
 class StreamDetails extends Component {
+  constructor(props) {
+    super(props)
+
+    this.followArtist = this._followArtist.bind(this)
+    this.tipArtist = this._tipArtist.bind(this)
+  }
+
   componentDidMount() {
     new Twitch.Embed("twitch-embed", {
       width: 854,
@@ -14,12 +24,48 @@ class StreamDetails extends Component {
     })
   }
 
+  _followArtist() {
+    console.log('Follow the artist!')
+  }
+
+  _tipArtist() {
+    console.log('Tip the artist!')
+  }
+
   render() {
-    const { stream } = this.props
+    const { stream, user } = this.props
     return (
-      <View>
-        <Text>{stream.title}</Text>
-        <View id="twitch-embed"></View>
+      <View style={Style.container}>
+        <View style={Style.info}>
+          <Text style={Style.name}>
+            Now playing
+            <Text style={Style.nameText}> {user.display_name}</Text>
+          </Text>
+          <Text style={Style.title}>{stream.title}</Text>
+          <View style={Style.tagList}>
+              <Text style={Style.tag}>Metal</Text>
+              <Text style={Style.tag}>Progressive</Text>
+              <Text style={Style.tag}>Djent</Text>
+            </View>
+        </View>
+        <View 
+          style={Style.stream} 
+          id="twitch-embed" 
+        />
+        <View style={Style.actions}>
+          <TouchableHighlight
+            onPress={this.followArtist}
+            style={Style.buttonFollow}
+          >
+            <Text style={Style.buttonText}>+ Follow</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={this.tipArtist}
+            style={Style.buttonTip}
+          >
+            <Text style={Style.buttonText}>$ Tip</Text>
+          </TouchableHighlight>
+        </View>
       </View>
     )
   }
@@ -28,10 +74,10 @@ class StreamDetails extends Component {
 export default connect(
   ({ streams, users }, { match }) => {
     const stream = streams.data.find(i => i.id === match.params.id)
-    // const user = users.data.find(i => i.id === stream.user_id)
+    const user = users.data.find(i => i.id === stream.user_id)
     return {
       stream,
-    //   user,
+      user,
     }
   }
 )(StreamDetails)

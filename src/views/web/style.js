@@ -149,7 +149,7 @@ export const login = StyleSheet.create({
 export const profile = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 10,
+    paddingVertical: 20,
     paddingHorizontal: 100,
     height,
   },
@@ -211,5 +211,79 @@ export const profile = StyleSheet.create({
     backgroundColor: Colors.purple,
     color: Colors.white,
     borderRadius,
+  },
+})
+
+export const stream = StyleSheet.create({
+  container: {
+    paddingVertical: 20,
+    paddingHorizontal: 100,
+    height,
+  },
+  info: {
+    alignSelf: 'center',
+    marginLeft: -100,
+    marginBottom: 20,
+  },
+  name: {
+    fontSize: 36,
+    fontWeight: '200',
+    color: Colors.dark,
+  },
+  nameText: {
+    fontWeight: '400',
+    color: Colors.primary,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: '200',
+    color: Colors.dark,
+  },
+  tagList: {
+    flexDirection: 'row',
+    marginVertical: 10,
+  },
+  tag: {
+    fontWeight: '600',
+    fontSize: 14,
+    marginRight: 10,
+    paddingHorizontal: 6,
+    paddingVertical: 3,
+    backgroundColor: Colors.purple,
+    color: Colors.white,
+    borderRadius,
+  },
+  stream: {
+    alignItems: 'center',
+    padding: 30,
+    backgroundColor: Colors.white,
+    alignSelf: 'center',
+    borderRadius,
+  },
+  actions: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginVertical: 30,
+  },
+  buttonFollow: {
+    borderRadius,
+    flex: 0.3,
+    alignItems: 'center',
+    paddingVertical: 10,
+    marginHorizontal: 20,
+    backgroundColor: Colors.primary,
+  },
+  buttonTip: {
+    borderRadius,
+    flex: 0.3,
+    alignItems: 'center',
+    paddingVertical: 10,
+    marginHorizontal: 20,
+    backgroundColor: Colors.pink,
+  },
+  buttonText: {
+    color: Colors.white,
+    fontWeight: '600',
+    fontSize: 20,
   },
 })
