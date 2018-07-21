@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {
   View,
-  TouchableHighlight,
+  TouchableOpacity,
   Image,
   Text,
 } from 'react-native'
@@ -36,30 +36,30 @@ class ProfileThumb extends Component {
     
     let view = (
       <View style={{ flexDirection: 'row' }}>
-        <TouchableHighlight
+        <TouchableOpacity
           onPress={this.gotoStart}
         >
           <Image 
-            style={{ width: 32, height: 32 }}
+            style={{ width: 24, height: 24 }}
             source={require('src/res/images/red_circle.png')}
           />
-        </TouchableHighlight>
-        <TouchableHighlight
+        </TouchableOpacity>
+        <TouchableOpacity
           style={Style.button}
           onPress={this.props.logout}
         >
           <Text style={Style.buttonText}>LOG OUT</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     )
     
     if (!loggedIn) view = (
-      <TouchableHighlight
+      <TouchableOpacity
         style={Style.button}
         onPress={this.gotoLogin}
       >
         <Text style={Style.buttonText}>LOGIN</Text>
-      </TouchableHighlight>
+      </TouchableOpacity>
     )
 
     if (pending) view = (

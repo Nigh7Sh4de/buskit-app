@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {
   View,
   Text,
-  TouchableHighlight,
+  TouchableOpacity,
   Image,
 } from 'react-native'
 
@@ -31,7 +31,7 @@ class LoginView extends Component {
             style={{ height: 72, width: 256 }}
           />
         </View>
-        <TouchableHighlight
+        <TouchableOpacity
           onPress={this.props.login}
         >
           <View style={Style.button}>
@@ -41,7 +41,7 @@ class LoginView extends Component {
             />
             <Text style={Style.buttonText}>Login with Twitch</Text>
           </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     )
   }

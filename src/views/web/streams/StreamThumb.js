@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {
   View,
-  TouchableHighlight,
+  TouchableOpacity,
   Image,
   Text,
 } from 'react-native'
@@ -26,7 +26,7 @@ export default class StreamThumb extends Component {
     const { title, user_id } = stream
     return (
       <View style={Style.thumb}>
-        <TouchableHighlight
+        <TouchableOpacity
           onPress={this.gotoStream}
         >
           <View style={Style.thumbInner}>
@@ -39,7 +39,7 @@ export default class StreamThumb extends Component {
               <Text style={{ fontWeight: '200', fontSize: 16 }}>{user_id}</Text>
             </View>
           </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     )
   }

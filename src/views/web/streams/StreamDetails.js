@@ -3,7 +3,7 @@ import {
   Text,
   View,
   ScrollView,
-  TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native'
 import { connect } from 'react-redux'
 
@@ -61,18 +61,18 @@ class StreamDetails extends Component {
           id="twitch-embed" 
         />
         <View style={Style.actions}>
-          <TouchableHighlight
+          <TouchableOpacity
             onPress={this.followArtist}
             style={Style.buttonFollow}
           >
             <Text style={Style.buttonText}>+ Follow</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
+          </TouchableOpacity>
+          <TouchableOpacity
             onPress={this.tipArtist}
             style={Style.buttonTip}
           >
             <Text style={Style.buttonText}>$ Tip</Text>
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     )

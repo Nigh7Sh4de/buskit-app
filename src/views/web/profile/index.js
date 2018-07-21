@@ -3,7 +3,7 @@ import {
   ScrollView,
   View,
   Text,
-  TouchableHighlight,
+  TouchableOpacity,
   Image,
 } from 'react-native'
 import { connect } from 'react-redux'
@@ -50,12 +50,12 @@ class ProfileView extends PureComponent {
     )
 
     const liveNowButton = (
-      <TouchableHighlight
+      <TouchableOpacity
         style={Style.live}
         onPress={this.gotoStream}
       >
         <Text style={Style.liveText}>🎵 Live Now</Text>
-      </TouchableHighlight>
+      </TouchableOpacity>
     )
 
     return (
@@ -73,12 +73,12 @@ class ProfileView extends PureComponent {
             </View>
             <Text style={Style.title}>{user.display_name}</Text>
             <Text style={Style.description}>{user.description || spam}</Text>
-            <TouchableHighlight
+            <TouchableOpacity
               onPress={this.followArtist}
               style={Style.button}
             >
               <Text style={Style.buttonText}>+ Follow</Text>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
         </View>
         {
