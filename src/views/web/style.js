@@ -6,8 +6,10 @@ import {
 const Colors = {
   primary: '#209a71',
   secondary: '#ff2a00',
-  pink: '#c17278',
-  purple: '#986787',
+  pink: '#e14285',
+  // pink: '#c17278',
+  purple: '#a867a7',
+  // purple: '#986787',
   twitch: '#6441a4',
   light: '#f2f2f2',
   dark: '#494343',
@@ -249,7 +251,7 @@ export const stream = StyleSheet.create({
   },
   nameText: {
     fontWeight: '400',
-    color: Colors.primary,
+    color: Colors.pink,
   },
   title: {
     fontSize: 20,
@@ -302,5 +304,97 @@ export const stream = StyleSheet.create({
     color: Colors.white,
     fontWeight: '600',
     fontSize: 20,
+  },
+})
+
+export const start = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingVertical: 20,
+    paddingHorizontal: 100,
+  },
+  section: {
+    backgroundColor: Colors.white,
+    alignItems: 'center',
+    marginTop: 2,
+    marginBottom: 20,
+    borderRadius,
+    padding: 10,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: '200',
+    color: Colors.dark,
+    marginBottom: 5,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: '200',
+    color: Colors.dark,
+    marginBottom: 5,
+  },
+  thumbImage: {
+    width: 250,
+    height: 250,
+  },
+  table: {
+    alignSelf: 'stretch',
+  },
+  row: {
+    flexDirection: 'row',
+  },
+  key: {
+    flex: 0.3,
+    alignItems: 'flex-end',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginVertical: 5,
+    borderRightWidth: 0.5,
+    borderColor: Colors.dark,
+  },
+  keyText: {
+    color: Colors.dark,
+    fontWeight: '200',
+    fontSize: 16,
+  },
+  value: {
+    flex: 0.7,
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    margin: 10,
+  },
+  valueText: {
+    color: Colors.dark,
+    fontWeight: '400',
+  },
+  tag: {
+    fontWeight: '600',
+    fontSize: 14,
+    marginRight: 4,
+    paddingHorizontal: 6,
+    marginVertical: 2,
+    paddingVertical: 3,
+    backgroundColor: Colors.purple,
+    color: Colors.white,
+    borderRadius,
+  },
+  input: {
+    borderRadius,
+    borderWidth: 2,
+    borderColor: Colors.purple,
+    paddingVertical: 3,
+    flex: 1,
+  },
+  button: {
+    alignSelf: 'center',
+    paddingVertical: 15,
+    paddingHorizontal: 60,
+    backgroundColor: Colors.secondary,
+    borderRadius,
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: Colors.white,
   },
 })

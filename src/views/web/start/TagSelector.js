@@ -1,52 +1,60 @@
 import React, { PureComponent } from 'react'
 import {
-  View,
-  Text,
   TextInput,
-  Button,
 } from 'react-native'
+
+import { start as Style } from 'src/views/web/style'
 
 export default class TagSelector extends PureComponent {
   constructor(props) {
     super(props)
 
+    this.input = React.createRef()
     this.state = {
       text: '',
-      tags: [],
     }
-    this.addTagToState = this._addTagToState.bind(this)
+
+    this.onChangeText = this._onChangeText.bind(this)
+    this.onSubmitEditing = this._onSubmitEditing.bind(this)
+    this.onKeyPress = this._onKeyPress.bind(this)
   }
 
-  _addTagToState() {
-    const tags = [...this.state.tags, this.state.text]
-    this.setState({
-      text: '',
-      tags,
-    })
-    this.props.onTagsChanged && this.props.onTagsChanged(tags)
+  _onKeyPress({ nativeEvent }) {
+    if (nativeEvent.key === 'Backspace' && !this.state.text.length) {
+      process.nextTick(() => {
+        const text =  this.props.onBack()
+        this.input.setNativeProps({ text })
+        this.setState({
+          text,
+        })
+      })
+    }
+  }
+
+  _onChangeText(text) {
+    if (text[text.length - 1] === ' ')
+      this.onSubmitEditing()
+    else
+      this.setState({ text })
+  }
+
+  _onSubmitEditing() {
+    if (this.state.text.length) {
+      const submit = this.props.onSubmit(this.state.text)
+      if (submit) this.setState({ text: '' })
+    }
   }
 
   render() {
-    const tags = this.state.tags.map((tag, i) => <Text key={i}>{tag}</Text>)
-
     return (
-      <View>
-        <View>
-          <Text>Add tags</Text>
-          <TextInput 
-            onChangeText={text => this.setState({ text })}
-            value={this.state.text}
-          />
-          <Button
-            onPress={this.addTagToState}
-            disabled={!this.state.text}
-            title="Add"
-          />
-        </View>
-        <View>
-          {tags}
-        </View>
-      </View>
+      <TextInput 
+        style={Style.input}
+        ref={input => this.input = input}
+        onChangeText={this.onChangeText}
+        onSubmitEditing={this.onSubmitEditing}
+        onKeyPress={this.onKeyPress}
+        value={this.state.text}
+      />
     )
   }
 }
