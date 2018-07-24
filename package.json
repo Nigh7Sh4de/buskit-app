@@ -2,13 +2,18 @@
   "name": "Buskit",
   "version": "0.0.2",
   "private": true,
+  "homepage": "https://nigh7sh4de.github.io/buskit-app/",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "web": "./node_modules/.bin/webpack-dev-server -d --config ./web/webpack.config.js --inline --hot --colors",
     "emulator": "emulator -avd n7",
-    "test": "jest"
+    "test": "jest",
+    "build": "./node_modules/.bin/webpack -p --config ./web/webpack.config.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "gh-pages": "^1.2.0",
     "react": "^16.4.0",
     "react-art": "^16.4.0",
     "react-dom": "^16.4.0",
