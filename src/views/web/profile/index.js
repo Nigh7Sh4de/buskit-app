@@ -24,7 +24,7 @@ class ProfileView extends PureComponent {
   }
 
   _followArtist() {
-    this.props.follow(this.props.user.id)
+    this.props.follow(this.props.user._id)
   }
 
   _gotoStream() {
@@ -71,8 +71,8 @@ class ProfileView extends PureComponent {
               <Text style={Style.tag}>Progressive</Text>
               <Text style={Style.tag}>Djent</Text>
             </View>
-            <Text style={Style.title}>{user.display_name}</Text>
-            <Text style={Style.description}>{user.description || spam}</Text>
+            <Text style={Style.title}>{user.profile.display_name}</Text>
+            <Text style={Style.description}>{user.profile.description || spam}</Text>
             <TouchableOpacity
               onPress={this.followArtist}
               style={Style.button}
@@ -95,7 +95,7 @@ class ProfileView extends PureComponent {
 
 export default connect(
   ({ users, streams }, props) => ({
-      user: users.data.find(i => i.id === props.match.params.id),
+      user: users.data.find(i => i._id === props.match.params.id),
       stream: streams.data.find(i => i.user_id === props.match.params.id),
       streams: streams.data,
   }),

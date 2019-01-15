@@ -30,7 +30,7 @@ class Streams extends Component {
           {
             users.map(u => (
               <UserThumb 
-                key={u.id}
+                key={u._id}
                 user={u}
                 redirect={this.props.history.push}
               />

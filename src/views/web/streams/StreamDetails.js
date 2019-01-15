@@ -22,7 +22,7 @@ class StreamDetails extends Component {
       return new Twitch.Embed("twitch-embed", {
         width: 854,
         height: 480,
-        channel: "ninja"
+        channel: this.props.user.profile.display_name,
       })
   }
 
@@ -47,7 +47,7 @@ class StreamDetails extends Component {
         <View style={Style.info}>
           <Text style={Style.name}>
             Now playing
-            <Text style={Style.nameText}> {user.display_name}</Text>
+            <Text style={Style.nameText}> {user.profile.display_name}</Text>
           </Text>
           <Text style={Style.title}>{stream.title}</Text>
           <View style={Style.tagList}>
@@ -81,8 +81,8 @@ class StreamDetails extends Component {
 
 export default connect(
   ({ streams, users }, { match }) => {
-    const stream = streams.data.find(i => i.id === match.params.id)
-    const user = users.data.find(i => i.id === stream.user_id)
+    const stream = streams.data.find(s => s.id === match.params.id)
+    const user = users.data.find(u => u.id === stream.user_id)
     return {
       stream,
       user,

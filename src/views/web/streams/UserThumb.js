@@ -18,13 +18,12 @@ export default class UserThumb extends Component {
   }
   
   _gotoLogin() {
-    console.log(this.props.user)
-    this.props.redirect(`/profile/${this.props.user.id}`)
+    this.props.redirect(`/profile/${this.props.user._id}`)
   }
 
   render() {
     const { user } = this.props
-    const { display_name } = user
+    const { display_name, profile_image_url } = user.profile
     return (
       <View style={Style.thumb}>
         <TouchableOpacity 
@@ -33,7 +32,7 @@ export default class UserThumb extends Component {
           <View style={[Style.thumbInner, { alignItems: 'center' }]}>
             <Image 
               style={[Style.thumbImage, { borderRadius: 1000 }]}
-              source={{ uri: 'https://static-cdn.jtvnw.net/user-default-pictures/0ecbb6c3-fecb-4016-8115-aa467b7c36ed-profile_image-300x300.jpg' }}
+              source={{ uri: profile_image_url }}
             />
             <Text style={Style.thumbText}>{display_name}</Text>
           </View>

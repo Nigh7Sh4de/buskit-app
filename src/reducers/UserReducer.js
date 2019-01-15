@@ -22,15 +22,13 @@ export default (state = initialState, action) => {
         pending: false
       }
     case Actions.USER_FETCH_DATA:
-      const new_data = action.data.filter(u => !state.data.find(i => i.id === u.id))
-      const data = [ ...state.data, ...new_data ]
       return { ...state,
-        data,
-        filtered_data: state.filtered_data || data,
+        data: action.data,
+        filtered_data: state.filtered_data || action.data,
       }
     case Actions.FILTER_UPDATED:
       const { filter } = action  
-      const filtered_data = state.data.filter(u => u.display_name.toLowerCase().indexOf(filter.text.toLowerCase()) >= 0)
+      const filtered_data = state.data.filter(u => u.profile.display_name.toLowerCase().indexOf(filter.text.toLowerCase()) >= 0)
       return { ...state,
         filtered_data,
       }

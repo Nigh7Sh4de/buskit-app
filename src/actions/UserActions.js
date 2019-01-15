@@ -5,30 +5,29 @@ import {
 
 import { openLink } from './NativeActions'
 
-const USERS_DATA = [
-  {
-    id: 'u123',
-    display_name: 'Awesomesausse',
-  },
-  {
-    id: 'u124',
-    display_name: 'Mcpantsface',
-  },
-]
+// const USERS_DATA = [
+//   {
+//     id: 'u123',
+//     display_name: 'Awesomesausse',
+//   },
+//   {
+//     id: 'u124',
+//     display_name: 'Mcpantsface',
+//   },
+// ]
 
-const LOGIN_DATA = {
-  id: 'u666',
-  display_name: 'Test User',
-}
+// const LOGIN_DATA = {
+//   id: 'u666',
+//   display_name: 'Test User',
+// }
 
 export function onAuthResponse(response) {
   return async (dispatch) => {
     try {
-      // const code = response.get('code')
-      // const codeResponse = await fetch(`http://192.168.2.14:3000/auth/twitch/redirect?code=${code}`)
-      // const user = await codeResponse.json()
-      // dispatch(loginSuccess(user))
-      dispatch(loginSuccess(LOGIN_DATA))
+      const code = response.get('code')
+      const codeResponse = await fetch(`http://138.197.147.219:3000/auth/twitch/redirect?code=${code}`)
+      const user = await codeResponse.json()
+      dispatch(loginSuccess(user))
     }
     catch(err) {
       dispatch(loginError(err))
@@ -37,9 +36,7 @@ export function onAuthResponse(response) {
 }
 
 export function login() {
-  // const redirect_uri = 'buskit://buskit.tv/redirect'
   const redirect_uri = 'http://localhost:8080/redirect'
-  // const url = 'https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=buskit://buskit.tv/redirect&response_type=code&scope=openid'
   const url = `https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=${redirect_uri}&response_type=code&scope=openid`
   return async dispatch => {
     dispatch(loginPending())
@@ -89,11 +86,9 @@ export function fetchUsers(ids = []) {
   return async dispatch => {
     try {
       dispatch(loginPending())
-      // const requests = ids.map(id => fetch(`http://192.168.2.14:3000/users/${id}`))
-      // const response = await Promise.all(requests)
-      // const users = await Promise.all(response.map(i => i.json()))
-      // dispatch(setUsers(users.map(i => i.data)))
-      dispatch(setUsers(USERS_DATA))
+      const users = await fetch(`http://138.197.147.219:3000/users`)
+      const data = await users.json()
+      dispatch(setUsers(data.users))
     }
     catch(err) {
       console.error(err)
@@ -108,6 +103,6 @@ export function followUser(id) {
   return async (dispatch, getState) => {
     const curUser = getState().users.user
     //some endpoint request to follow the user
-    console.log(curUser.id, 'wants to follow', id)
+    console.log(curUser._id, 'wants to follow', id)
   }
 }

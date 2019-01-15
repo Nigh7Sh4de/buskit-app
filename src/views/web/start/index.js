@@ -107,7 +107,7 @@ class StreamView extends Component {
 
 export default connect(
   ({ streams, users }) => {
-    const user_id = users.user.id
+    const user_id = users.user._id
     const stream = streams.data.find(i => i.user_id === user_id)
 
     return {
