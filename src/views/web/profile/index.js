@@ -32,13 +32,13 @@ class ProfileView extends PureComponent {
   }
 
   render() {
-    const { user, streams } = this.props
+    const { user, stream, videos } = this.props
 
-    let clips = <Text>No clips</Text>
-    if (streams.length) clips = (
+    let pastVideos = <Text>No videos</Text>
+    if (videos.length) pastVideos = (
       <View style={[Style.section, { flexWrap: 'wrap' }]}>
         {
-          streams.map(s => (
+          videos.map(s => (
             <StreamThumb 
               key={s.id}
               stream={s}
@@ -82,11 +82,11 @@ class ProfileView extends PureComponent {
           </View>
         </View>
         {
-          this.props.stream && liveNowButton
+          stream && liveNowButton
         }
         <View style={{flex: 1}}>
-          <Text style={Style.title}>Clips</Text>
-          {clips}
+          <Text style={Style.title}>Videos</Text>
+          {pastVideos}
         </View>
       </ScrollView>
     )
@@ -94,10 +94,10 @@ class ProfileView extends PureComponent {
 }
 
 export default connect(
-  ({ users, streams }, props) => ({
+  ({ users, streams, videos }, props) => ({
       user: users.data.find(i => i._id === props.match.params.id),
       stream: streams.data.find(i => i.user_id === props.match.params.id),
-      streams: streams.data,
+      videos: videos.data.filter(i => i.user_id === props.match.params.id),
   }),
   dispatch => ({
     follow: user => dispatch(followUser(user)),
