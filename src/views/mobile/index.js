@@ -8,8 +8,8 @@ import {
   Switch,
 } from 'react-router-dom'
 
-import HomeView from 'src/views/web/home'
-import LoginView from 'src/views/web/LoginView'
+import HomeView from 'src/views/mobile/HomeView'
+import LoginView from 'src/views/mobile/LoginView'
 
 
 export default class extends Component {

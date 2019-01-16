@@ -12,7 +12,6 @@ import {
 } from 'react-router-dom'
 
 import { app as Style } from 'src/views/web/style'
-import HomeView from 'src/views/web/home'
 import ProfileView from 'src/views/web/profile'
 import StartView from 'src/views/web/start'
 import StreamsView from 'src/views/web/streams'
