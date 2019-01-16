@@ -33,6 +33,7 @@ class ProfileView extends PureComponent {
 
   render() {
     const { user, stream, videos } = this.props
+    const { profile_image_url } = user.profile
 
     let pastVideos = <Text>No videos</Text>
     if (videos.length) pastVideos = (
@@ -58,12 +59,15 @@ class ProfileView extends PureComponent {
       </TouchableOpacity>
     )
 
+    const default_url = 'https://static-cdn.jtvnw.net/user-default-pictures/0ecbb6c3-fecb-4016-8115-aa467b7c36ed-profile_image-300x300.jpg'
+    const uri = !profile_image_url || profile_image_url === 'https://link/to/thumbnail.jpg' ? default_url : profile_image_url
+
     return (
       <ScrollView style={Style.container}>
         <View style={Style.info}>
           <Image 
             style={[Style.thumbImage, { borderRadius: 300 }]}
-            source={{ uri: 'https://static-cdn.jtvnw.net/user-default-pictures/0ecbb6c3-fecb-4016-8115-aa467b7c36ed-profile_image-300x300.jpg' }}
+            source={{ uri }}
           />
           <View style={Style.infoInner}>
             <View style={Style.tagList}>
