@@ -25,7 +25,7 @@ export default class StreamThumb extends Component {
     const { stream } = this.props
     const { title, user_id, thumbnail_url } = stream
     const default_url = 'https://static-cdn.jtvnw.net/user-default-pictures/0ecbb6c3-fecb-4016-8115-aa467b7c36ed-profile_image-300x300.jpg'
-    const uri = thumbnail_url === 'https://link/to/thumbnail.jpg' ? default_url : thumbnail_url
+    const uri = !thumbnail_url || thumbnail_url === 'https://link/to/thumbnail.jpg' ? default_url : thumbnail_url
     return (
       <View style={Style.thumb}>
         <TouchableOpacity

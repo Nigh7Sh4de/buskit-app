@@ -9,19 +9,21 @@ import {
 import { streams as Style} from 'src/views/web/style'
 import { fetchStreams } from 'src/actions/StreamsActions.js'
 import { fetchUsers } from 'src/actions/UserActions.js'
+import { fetchVideos } from 'src/actions/VideosActions.js'
 
 import StreamThumb from 'src/views/web/streams/StreamThumb.js'
 import UserThumb from 'src/views/web/streams/UserThumb.js'
 
 class Streams extends Component {
   componentWillMount() {
-    this.props.fetchStreams()
     this.props.fetchUsers()
+    this.props.fetchStreams()
+    this.props.fetchVideos()
   }
 
   render() {
-    const { streams, users } = this.props
-    let artists, liveStreams, clips
+    const { streams, videos, users } = this.props
+    let artists, liveStreams, pastVideos
 
     if (users.length) artists = (
       <View>
@@ -57,30 +59,32 @@ class Streams extends Component {
       </View>
     )
     
-    if (streams.length) clips = (
+    if (videos.length) pastVideos = (
       <View>
-        <Text style={Style.title}>Clips</Text>
+        <Text style={Style.title}>Videos</Text>
         <View style={[Style.section, { flexWrap: 'wrap' }]}>
           {
-            streams.map(s => (
+            videos.map(s => //<Text>{JSON.stringify(s)}</Text>
+            (
               <StreamThumb 
                 key={s.id}
                 stream={s}
                 redirect={this.props.history.push}
               />
-            ))
+            )
+          )
           }
         </View>
       </View>
     )
 
-    const empty = !artists && !liveStreams && !clips
+    const empty = !artists && !liveStreams && !videos
 
     return (
       <ScrollView style={Style.container}>
         {artists}
         {liveStreams}
-        {clips}
+        {pastVideos}
         {
           empty && <Text style={Style.empty}>🤔 No search results</Text>
         }
@@ -90,12 +94,14 @@ class Streams extends Component {
 }
 
 export default connect(
-  ({ streams, users }) => ({
+  ({ streams, users, videos }) => ({
     streams: streams.filtered_data || [],
     users: users.filtered_data || [],
+    videos: videos.filtered_data || [],
   }),
   dispatch => ({
     fetchStreams: () => dispatch(fetchStreams()),
     fetchUsers: () => dispatch(fetchUsers()),
+    fetchVideos: () => dispatch(fetchVideos()),
   })
 )(Streams)
