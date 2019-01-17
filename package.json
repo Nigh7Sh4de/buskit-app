@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "web": "./node_modules/.bin/webpack-dev-server -d --config ./web/webpack.config.js --inline --hot --colors",
+    "web-build": "./node_modules/.bin/webpack -p --config ./web/webpack.config.js",
     "emulator": "emulator -avd n7",
     "test": "jest",
     "predeploy": "npm run build",
