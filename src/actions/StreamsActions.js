@@ -47,3 +47,16 @@ export function fetchStreams() {
     dispatch(setStreams(data.streams))
   }
 }
+
+export function tagStream(stream, tags) {
+  return async (dispatch, getState) => {
+    await fetch(`http://138.197.147.219:3000/streams/${stream.id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        tags,
+      })
+    })
+    
+    await dispatch(fetchStreams())
+  }
+}

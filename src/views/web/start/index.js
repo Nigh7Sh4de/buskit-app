@@ -7,6 +7,8 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 
+import { tagStream } from 'src/actions/StreamsActions'
+
 import { start as Style } from 'src/views/web/style'
 
 import TagSelector from 'src/views/web/start/TagSelector'
@@ -49,10 +51,7 @@ class StreamView extends Component {
   }
 
   _start() {
-    const stream = {
-      tags: this.state.tags,
-    }
-    console.log('Go!', stream)
+    this.props.tagStream(this.props.stream, this.state.tags)
   }
 
   render() {
@@ -107,7 +106,7 @@ class StreamView extends Component {
 
 export default connect(
   ({ streams, users }) => {
-    const user_id = users.user._id
+    const user_id = users.user.user._id
     const stream = streams.data.find(i => i.user_id === user_id)
 
     return {
@@ -115,6 +114,6 @@ export default connect(
     }
   },
   dispatch => ({
-
+    tagStream: (stream, tags) => dispatch(tagStream(stream, tags))
   })
 )(StreamView)
