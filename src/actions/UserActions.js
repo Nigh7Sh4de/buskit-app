@@ -25,7 +25,7 @@ export function onAuthResponse(response) {
   return async (dispatch) => {
     try {
       const code = response.get('code')
-      const codeResponse = await fetch(`http://138.197.147.219:3000/auth/twitch/redirect?code=${code}`)
+      const codeResponse = await fetch(`https://api.buskit.live/auth/twitch/redirect?code=${code}`)
       const user = await codeResponse.json()
       dispatch(loginSuccess(user))
     }
@@ -86,7 +86,7 @@ export function fetchUsers(ids = []) {
   return async dispatch => {
     try {
       dispatch(loginPending())
-      const users = await fetch(`http://138.197.147.219:3000/users`)
+      const users = await fetch(`https://api.buskit.live/users`)
       const data = await users.json()
       dispatch(setUsers(data.users))
     }

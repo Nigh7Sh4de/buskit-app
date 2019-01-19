@@ -42,7 +42,7 @@ export function setVideos(videos) {
 
 export function fetchVideos() {
   return async (dispatch, getState) => {
-    // const response = await fetch(`http://138.197.147.219:3000/videos`)
+    // const response = await fetch(`https://api.buskit.live/videos`)
     // const data = await response.json()
     // dispatch(setVideos(data.videos))
     dispatch(setVideos(VIDEO_DATA))

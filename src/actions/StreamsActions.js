@@ -42,7 +42,7 @@ export function setStreams(streams) {
 
 export function fetchStreams() {
   return async (dispatch, getState) => {
-    const response = await fetch(`http://138.197.147.219:3000/streams`)
+    const response = await fetch(`https://api.buskit.live/streams`)
     const data = await response.json()
     dispatch(setStreams(data.streams))
   }
@@ -50,7 +50,7 @@ export function fetchStreams() {
 
 export function tagStream(stream, tags) {
   return async (dispatch, getState) => {
-    await fetch(`http://138.197.147.219:3000/streams/${stream.id}`, {
+    await fetch(`https://api.buskit.live/streams/${stream.id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         tags,
