@@ -42,7 +42,9 @@ export function setStreams(streams) {
 
 export function fetchStreams() {
   return async (dispatch, getState) => {
-    const response = await fetch(`https://api.buskit.live/streams`)
+    const response = await fetch(`https://api.buskit.live/streams`, {
+      mode: 'cors',
+    })
     const data = await response.json()
     dispatch(setStreams(data.streams))
   }
@@ -52,6 +54,7 @@ export function tagStream(stream, tags) {
   return async (dispatch, getState) => {
     await fetch(`https://api.buskit.live/streams/${stream.id}`, {
       method: 'PATCH',
+      mode: 'cors',
       body: JSON.stringify({
         tags,
       })
