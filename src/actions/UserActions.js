@@ -38,8 +38,8 @@ export function onAuthResponse(response) {
 }
 
 export function login() {
-  const redirect_uri = 'http://localhost:8080/redirect'
-  const url = `https://id.twitch.tv/oauth2/authorize?client_id=k6zpqqplgc8nyknrnkag6qhfpesc9p&redirect_uri=${redirect_uri}&response_type=code&scope=openid`
+  const redirect_uri = 'https://www.buskit.live/redirect'
+  const url = `https://id.twitch.tv/oauth2/authorize?client_id=zeod52e6vf639p7ztytpuekmyucm2n&redirect_uri=${redirect_uri}&response_type=code&scope=openid`
   return async dispatch => {
     dispatch(loginPending())
     if (Platform.OS !== 'web')
