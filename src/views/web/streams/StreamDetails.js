@@ -82,6 +82,8 @@ class StreamDetails extends Component {
 export default connect(
   ({ streams, users }, { match }) => {
     const stream = streams.data.find(s => s.id === match.params.id)
+    if (!stream) return {}
+    
     const user = users.data.find(u => u.id === stream.user_id)
     return {
       stream,
